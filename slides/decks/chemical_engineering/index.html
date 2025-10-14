@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRR Chemical Engineering Optimization</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 100px;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            color: #00d4ff;
+        }
+
+        h3 {
+            font-size: 1.7em;
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+
+        p, li {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.6em;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .metric-card {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 3.5em;
+            font-weight: bold;
+            color: #00ff88;
+            margin: 15px 0;
+        }
+
+        .metric-label {
+            font-size: 1.3em;
+            color: #aaa;
+        }
+
+        .problem-list {
+            background: rgba(255, 50, 50, 0.1);
+            border-left: 5px solid #ff3232;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+
+        .solution-list {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 5px solid #00ff88;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+
+        .info-list {
+            background: rgba(0, 212, 255, 0.1);
+            border-left: 5px solid #00d4ff;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        ul li:before {
+            content: "▸ ";
+            color: #00d4ff;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 153, 255, 0.2) 100%);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 25px 0;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid #00d4ff;
+            color: white;
+            padding: 20px 30px;
+            font-size: 1.5em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            pointer-events: all;
+        }
+
+        .nav-btn:hover {
+            background: #00d4ff;
+            color: #0a0a0a;
+            transform: scale(1.1);
+        }
+
+        .home-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid #00d4ff;
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1001;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .home-btn:hover {
+            background: #00d4ff;
+            color: #0a0a0a;
+            transform: scale(1.05);
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .dashboard-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+            margin: 25px 0;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .app-card {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .app-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .savings-highlight {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active slide-1">
+            <div class="slide-content">
+                <h1>QRR Chemical Engineering Optimization</h1>
+                <p class="subtitle">Acetone/Water Distillation Column Case Study</p>
+                <div class="results-grid" style="margin-top: 60px;">
+                    <div class="metric-card">
+                        <div class="metric-label">Annual Cost Savings</div>
+                        <div class="metric-value">$60K+</div>
+                        <div class="metric-label">4.7% reduction per column</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Energy Savings</div>
+                        <div class="metric-value">400K+</div>
+                        <div class="metric-label">kWh per year</div>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 50px;">
+                    <p style="font-size: 2em; text-align: center;"><strong>Software-only solution</strong></p>
+                    <p style="font-size: 1.5em; text-align: center; color: #aaa; margin-top: 15px;">No hardware upgrades • Compatible with all DCS/PLC systems</p>
+                </div>
+            </div>
+            <div class="slide-number">1/7</div>
+        </div>
+
+        <!-- Slide 2: Process & Problem -->
+        <div class="slide slide-2">
+            <div class="slide-content">
+                <h2>Process & Problem</h2>
+                <div class="info-list">
+                    <h3>System Specifications</h3>
+                    <ul style="font-size: 1.3em;">
+                        <li>Binary distillation: Acetone/Water separation</li>
+                        <li>Feed rate: 100 kmol/hr</li>
+                        <li>Column: 15 trays, atmospheric pressure</li>
+                        <li>Target: >99.5% acetone purity</li>
+                    </ul>
+                </div>
+                <div class="problem-list">
+                    <h3>Critical Challenges</h3>
+                    <ul style="font-size: 1.3em;">
+                        <li><strong>Fouling and energy losses</strong> - Progressive efficiency degradation</li>
+                        <li><strong>Off-spec production</strong> - Quality inconsistencies</li>
+                        <li><strong>Rising maintenance costs</strong> - Reactive approach</li>
+                        <li><strong>High operating costs</strong> - Baseline: ~$1.2M per year</li>
+                    </ul>
+                </div>
+                <div class="highlight-box">
+                    <p style="font-size: 1.8em; text-align: center;">Traditional fixed-parameter control cannot adapt to changing conditions</p>
+                </div>
+            </div>
+            <div class="slide-number">2/7</div>
+        </div>
+
+        <!-- Slide 3: Modeling Approach -->
+        <div class="slide slide-3">
+            <div class="slide-content">
+                <h2>QRR Modeling Approach</h2>
+                <p style="font-size: 1.8em; margin-bottom: 40px;">Comprehensive simulation tracking all critical parameters</p>
+                <div class="highlight-box">
+                    <h3>Simulation Parameters</h3>
+                    <p style="font-size: 1.3em;">Tracks tray efficiency, flooding risk, energy use, fouling progression, and maintenance cycles in real-time</p>
+                </div>
+                <div class="comparison-grid">
+                    <div class="problem-list">
+                        <h3>Conventional Control</h3>
+                        <ul style="font-size: 1.2em;">
+                            <li>Fixed energy input parameters</li>
+                            <li>Reactive maintenance scheduling</li>
+                            <li>No predictive management</li>
+                            <li>Manual operator adjustments</li>
+                        </ul>
+                    </div>
+                    <div class="solution-list">
+                        <h3>QRR-Optimized</h3>
+                        <ul style="font-size: 1.2em;">
+                            <li>Adaptive control systems</li>
+                            <li>Predictive fouling management</li>
+                            <li>Real-time optimization</li>
+                            <li>Automated performance tuning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">3/7</div>
+        </div>
+
+        <!-- Slide 4: Performance Results -->
+        <div class="slide slide-4">
+            <div class="slide-content">
+                <h2 style="font-size: 2.2em; margin-bottom: 12px;">Validated Performance Results</h2>
+                <p class="subtitle" style="font-size: 1.2em; margin-bottom: 15px;">Comprehensive analysis across all key performance indicators</p>
+                <img src="images/Distillation_Column_1.png" alt="Distillation Simulation Results" class="dashboard-img" style="max-height: 750px; margin: 15px 0 8px 0;"/>
+                <p style="text-align: center; font-size: 0.95em; color: #aaa;">QRR optimization delivers measurable improvements across all metrics</p>
+            </div>
+            <div class="slide-number">4/7</div>
+        </div>
+
+        <!-- Slide 5: Business Impact -->
+        <div class="slide slide-5">
+            <div class="slide-content">
+                <h2>Business Impact</h2>
+                <div class="results-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Energy Savings</div>
+                        <div class="metric-value">400K+</div>
+                        <div class="metric-label">kWh per year</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Cost Reduction</div>
+                        <div class="metric-value">$60K</div>
+                        <div class="metric-label">Annual savings (4.7%)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Fouling Control</div>
+                        <div class="metric-value">30%</div>
+                        <div class="metric-label">Reduction in fouling rate</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Hardware Upgrades</div>
+                        <div class="metric-value">ZERO</div>
+                        <div class="metric-label">Software-only solution</div>
+                    </div>
+                </div>
+                <div class="solution-list" style="margin-top: 40px;">
+                    <h3>Zero-Risk Value Proposition:</h3>
+                    <ul style="font-size: 1.3em;">
+                        <li><strong>No upfront investment</strong> - You don't pay until you see results</li>
+                        <li><strong>Compatible with existing systems</strong> - All DCS/PLC platforms</li>
+                        <li><strong>Rapid deployment</strong> - Weeks, not months</li>
+                        <li><strong>Scalable across facilities</strong> - Replicate success plant-wide</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-number">5/7</div>
+        </div>
+
+        <!-- Slide 6: Broader Applications -->
+        <div class="slide slide-6">
+            <div class="slide-content">
+                <h2>Beyond Distillation</h2>
+                <p style="font-size: 1.8em; margin-bottom: 35px;">QRR optimization applies across your entire chemical engineering workflow</p>
+                <div class="app-grid">
+                    <div class="app-card">
+                        <h3>🔥 Reaction Vessels</h3>
+                        <ul style="font-size: 1.1em; margin-top: 15px;">
+                            <li>Temperature optimization</li>
+                            <li>Conversion efficiency improvement</li>
+                            <li>Catalyst life extension</li>
+                        </ul>
+                        <div class="savings-highlight">Typical: 3-8% cost reduction</div>
+                    </div>
+                    <div class="app-card">
+                        <h3>♨️ Heat Exchangers</h3>
+                        <ul style="font-size: 1.1em; margin-top: 15px;">
+                            <li>Fouling prediction & prevention</li>
+                            <li>Energy efficiency gains</li>
+                            <li>Predictive maintenance scheduling</li>
+                        </ul>
+                        <div class="savings-highlight">Typical: 5-12% energy savings</div>
+                    </div>
+                    <div class="app-card">
+                        <h3>🌀 Separators</h3>
+                        <ul style="font-size: 1.1em; margin-top: 15px;">
+                            <li>Product purity control</li>
+                            <li>Throughput optimization</li>
+                            <li>Pressure management</li>
+                        </ul>
+                        <div class="savings-highlight">Typical: 4-10% yield improvement</div>
+                    </div>
+                    <div class="app-card">
+                        <h3>⚗️ Crystallizers</h3>
+                        <ul style="font-size: 1.1em; margin-top: 15px;">
+                            <li>Crystal size distribution control</li>
+                            <li>Yield maximization</li>
+                            <li>Quality consistency</li>
+                        </ul>
+                        <div class="savings-highlight">Typical: 5-15% yield increase</div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">6/7</div>
+        </div>
+
+        <!-- Slide 7: Call to Action -->
+        <div class="slide slide-7">
+            <div class="slide-content" style="text-align: center;">
+                <h2>Transform Your Process Efficiency</h2>
+                <p style="font-size: 2em; margin: 40px 0;">Ready to optimize your chemical processes?</p>
+                <div class="highlight-box" style="max-width: 1000px; margin: 40px auto;">
+                    <h3 style="margin-bottom: 25px;">Potential Plant-Wide Impact</h3>
+                    <div style="font-size: 1.4em; line-height: 2;">
+                        <p><strong>Typical Chemical Plant:</strong> 10-20 major process units</p>
+                        <p><strong>Average Savings per Unit:</strong> $50-200K annually</p>
+                        <p style="margin-top: 25px; color: #00ff88; font-size: 1.3em;">
+                            <strong>Plant-Wide Potential: $500K - $4M Annual Savings</strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="highlight-box" style="max-width: 900px; margin: 60px auto;">
+                    <h3 style="margin-bottom: 30px;">Schedule a Process Assessment</h3>
+                    <p style="font-size: 1.6em; margin: 20px 0;"><strong>Robin Macomber</strong></p>
+                    <p style="font-size: 1.3em; margin: 15px 0;">
+                        <a href="../../index.html#two" style="color: #00d4ff; text-decoration: none; border-bottom: 2px solid #00d4ff;">relationalrelativity@gmail.com</a>
+                    </p>
+                    <p style="font-size: 1.3em; margin: 15px 0;">805-621-0987</p>
+                </div>
+                <p style="font-size: 1.2em; color: #aaa; margin-top: 50px; font-style: italic;">
+                    Relational Relativity LLC — Optimizing Chemical Processes Through Mathematics
+                </p>
+            </div>
+            <div class="slide-number">7/7</div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn">← Previous</button>
+        <button class="nav-btn" id="nextBtn">Next →</button>
+    </div>
+
+    <a href="../../index.html" class="home-btn">🏠 Home</a>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+        }
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+            if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+        });
+    </script>
+</body>
+</html>

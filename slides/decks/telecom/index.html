@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRR Telecom Network Optimization</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 100px;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            color: #00d4ff;
+        }
+
+        h3 {
+            font-size: 1.7em;
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+
+        p, li {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.6em;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .metric-card {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 3.5em;
+            font-weight: bold;
+            color: #00ff88;
+            margin: 15px 0;
+        }
+
+        .metric-label {
+            font-size: 1.3em;
+            color: #aaa;
+        }
+
+        .problem-list {
+            background: rgba(255, 50, 50, 0.1);
+            border-left: 5px solid #ff3232;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+
+        .solution-list {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 5px solid #00ff88;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        ul li:before {
+            content: "▸ ";
+            color: #00d4ff;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 153, 255, 0.2) 100%);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 25px 0;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid #00d4ff;
+            color: white;
+            padding: 20px 30px;
+            font-size: 1.5em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            pointer-events: all;
+        }
+
+        .nav-btn:hover {
+            background: #00d4ff;
+            color: #0a0a0a;
+            transform: scale(1.1);
+        }
+
+        .home-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid #00d4ff;
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1001;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .home-btn:hover {
+            background: #00d4ff;
+            color: #0a0a0a;
+            transform: scale(1.05);
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .dashboard-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+            margin: 25px 0;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .three-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active slide-1">
+            <div class="slide-content">
+                <h1>QRR Telecom Network Optimization</h1>
+                <p class="subtitle">Relational Mathematics for Next-Generation Network Efficiency</p>
+                <div class="results-grid" style="margin-top: 60px;">
+                    <div class="metric-card">
+                        <div class="metric-label">Packet Loss Reduction</div>
+                        <div class="metric-value">25.8%</div>
+                        <div class="metric-label">Validated performance improvement</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Latency Improvement</div>
+                        <div class="metric-value">20.4%</div>
+                        <div class="metric-label">Real-time network optimization</div>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 50px;">
+                    <p style="font-size: 2em; text-align: center;"><strong>Software-only solution</strong></p>
+                    <p style="font-size: 1.5em; text-align: center; color: #aaa; margin-top: 15px;">No hardware upgrades required</p>
+                </div>
+            </div>
+            <div class="slide-number">1/7</div>
+        </div>
+
+        <!-- Slide 2: The Problem -->
+        <div class="slide slide-2">
+            <div class="slide-content">
+                <h2>The Network Optimization Challenge</h2>
+                <p style="font-size: 2em; margin-bottom: 40px;">Traditional routing fails to adapt to modern network complexity</p>
+                <div class="problem-list">
+                    <h3>Critical Limitations:</h3>
+                    <ul style="font-size: 1.4em;">
+                        <li><strong>Static routing</strong> can't respond to dynamic network conditions</li>
+                        <li><strong>High packet loss</strong> during congestion and peak usage</li>
+                        <li><strong>Latency spikes</strong> degrade user experience</li>
+                        <li><strong>Inefficient resource utilization</strong> wastes capacity</li>
+                        <li><strong>Manual optimization</strong> too slow for real-time needs</li>
+                    </ul>
+                </div>
+                <div class="highlight-box" style="margin-top: 50px;">
+                    <p style="font-size: 2em; text-align: center;">Networks are growing exponentially more complex</p>
+                    <p style="font-size: 1.5em; text-align: center; color: #aaa; margin-top: 15px;">Traditional approaches can't keep pace</p>
+                </div>
+            </div>
+            <div class="slide-number">2/7</div>
+        </div>
+
+        <!-- Slide 3: The QRR Solution -->
+        <div class="slide slide-3">
+            <div class="slide-content">
+                <h2>QRR Relational Optimization</h2>
+                <p style="font-size: 2em; margin-bottom: 40px;">Intelligent network routing through relationship modeling</p>
+                <div class="solution-list">
+                    <h3>How It Works:</h3>
+                    <ul style="font-size: 1.4em;">
+                        <li><strong>Relational mapping</strong> of network topology and traffic patterns</li>
+                        <li><strong>Real-time optimization</strong> adapts to changing conditions</li>
+                        <li><strong>Predictive routing</strong> anticipates congestion before it occurs</li>
+                        <li><strong>Dynamic load balancing</strong> across all network paths</li>
+                        <li><strong>Seamless integration</strong> with existing infrastructure</li>
+                    </ul>
+                </div>
+                <div class="highlight-box" style="margin-top: 40px;">
+                    <h3 style="text-align: center; margin-bottom: 25px;">The Key Insight</h3>
+                    <p style="font-size: 1.8em; text-align: center;">Networks are inherently relational—optimize the relationships between nodes, not just the nodes themselves</p>
+                </div>
+            </div>
+            <div class="slide-number">3/7</div>
+        </div>
+
+        <!-- Slide 4: Performance Validation -->
+        <div class="slide slide-4">
+            <div class="slide-content">
+                <h2 style="font-size: 2.5em; margin-bottom: 20px;">Validated Performance Results</h2>
+                <p class="subtitle" style="font-size: 1.3em; margin-bottom: 20px;">Real-world simulation with production network characteristics</p>
+                <div class="three-grid">
+                    <div class="metric-card" style="padding: 20px;">
+                        <div class="metric-label" style="font-size: 1em;">Packet Loss</div>
+                        <div class="metric-value" style="font-size: 2em; margin: 10px 0;">-12.3%</div>
+                        <div class="metric-label" style="font-size: 0.9em;">Traditional: 0.09% | QRR: 0.08%</div>
+                    </div>
+                    <div class="metric-card" style="padding: 20px;">
+                        <div class="metric-label" style="font-size: 1em;">Latency</div>
+                        <div class="metric-value" style="font-size: 2em; margin: 10px 0;">-20.9%</div>
+                        <div class="metric-label" style="font-size: 0.9em;">Traditional: 6.6ms | QRR: 5.2ms</div>
+                    </div>
+                    <div class="metric-card" style="padding: 20px;">
+                        <div class="metric-label" style="font-size: 1em;">Throughput</div>
+                        <div class="metric-value" style="font-size: 2em; margin: 10px 0;">0.0%</div>
+                        <div class="metric-label" style="font-size: 0.9em;">Maintained full capacity</div>
+                    </div>
+                </div>
+                <img src="images/performance_validation.png" alt="QRR Performance Validation" class="dashboard-img" style="max-height: 520px; margin: 20px 0 15px 0;"/>
+                <p style="text-align: center; font-size: 1em; color: #aaa;">Comprehensive validation across packet loss, latency, throughput, and network health metrics</p>
+            </div>
+            <div class="slide-number">4/7</div>
+        </div>
+
+        <!-- Slide 5: Latency Over Time -->
+        <div class="slide slide-5">
+            <div class="slide-content">
+                <h2>Dynamic Performance Comparison</h2>
+                <p class="subtitle">Consistent latency advantages under varying network conditions</p>
+                <img src="images/latency_comparison.png" alt="Latency Over Time Comparison" class="dashboard-img" style="max-height: 500px;"/>
+                <div class="highlight-box" style="margin-top: 30px;">
+                    <p style="font-size: 1.8em; text-align: center;"><strong>QRR maintains lower latency throughout network lifecycle</strong></p>
+                    <p style="font-size: 1.4em; text-align: center; color: #aaa; margin-top: 15px;">Adaptive routing responds to real-time conditions</p>
+                </div>
+            </div>
+            <div class="slide-number">5/7</div>
+        </div>
+
+        <!-- Slide 6: Implementation Benefits -->
+        <div class="slide slide-6">
+            <div class="slide-content">
+                <h2>Implementation & Business Impact</h2>
+                <div class="solution-list">
+                    <h3>Technical Advantages:</h3>
+                    <ul style="font-size: 1.3em;">
+                        <li><strong>Software-only deployment</strong> - No hardware upgrades required</li>
+                        <li><strong>Non-disruptive integration</strong> - Works with existing infrastructure</li>
+                        <li><strong>Scalable architecture</strong> - Handles networks of any size</li>
+                        <li><strong>Real-time adaptation</strong> - Continuously optimizes performance</li>
+                        <li><strong>Reduced operational costs</strong> - Automates manual optimization</li>
+                    </ul>
+                </div>
+                <div class="highlight-box" style="margin-top: 40px;">
+                    <h3>Business Benefits:</h3>
+                    <ul style="font-size: 1.3em;">
+                        <li>Improved customer experience through reduced latency and packet loss</li>
+                        <li>Higher network capacity utilization without infrastructure investment</li>
+                        <li>Competitive advantage through superior network performance</li>
+                        <li>Future-proof solution that adapts to growing network complexity</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-number">6/7</div>
+        </div>
+
+        <!-- Slide 7: Financial Impact -->
+        <div class="slide slide-7">
+            <div class="slide-content">
+                <h2 style="font-size: 2.2em; margin-bottom: 15px;">Financial Impact & ROI</h2>
+                <p class="subtitle" style="font-size: 1.2em; margin-bottom: 20px;">Quantifying the business value of network optimization</p>
+                <div class="results-grid" style="margin-top: 20px; gap: 20px;">
+                    <div class="metric-card" style="padding: 15px;">
+                        <div class="metric-label" style="font-size: 0.9em;">Operational Cost Reduction</div>
+                        <div class="metric-value" style="font-size: 2em; margin: 8px 0;">15-20%</div>
+                        <div class="metric-label" style="font-size: 0.85em;">Lower infrastructure strain</div>
+                    </div>
+                    <div class="metric-card" style="padding: 15px;">
+                        <div class="metric-label" style="font-size: 0.9em;">Customer Churn Prevention</div>
+                        <div class="metric-value" style="font-size: 2em; margin: 8px 0;">5-10%</div>
+                        <div class="metric-label" style="font-size: 0.85em;">Better service quality</div>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 20px; padding: 20px;">
+                    <h3 style="text-align: center; margin-bottom: 15px; font-size: 1.3em;">Example: Mid-Size Telecom Provider</h3>
+                    <div style="font-size: 1.05em; line-height: 1.5;">
+                        <p><strong>Annual Network OpEx:</strong> $50 million | <strong>Customer Base:</strong> 500K subscribers at $80/month ARPU</p>
+                        <p style="margin-top: 12px; color: #00ff88;"><strong>Cost Savings:</strong> $7.5-10M annually (15-20% OpEx reduction)</p>
+                        <p style="color: #00ff88;"><strong>Churn Prevention:</strong> $2.4-4.8M annually (5-10% retention improvement)</p>
+                        <p style="margin-top: 15px; font-size: 1.15em; text-align: center; padding: 12px; background: rgba(0, 255, 136, 0.2); border-radius: 10px;">
+                            <strong>Total Annual Value: $10-15 Million</strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="solution-list" style="margin-top: 20px; padding: 18px;">
+                    <h3 style="font-size: 1.3em; margin-bottom: 10px;">Additional Benefits:</h3>
+                    <ul style="font-size: 1em; line-height: 1.4;">
+                        <li><strong>Deferred infrastructure investment</strong> - Extend existing capacity 2-3 years</li>
+                        <li><strong>Reduced support costs</strong> - Fewer customer complaints and service calls</li>
+                        <li><strong>Competitive advantage</strong> - Superior network performance</li>
+                        <li><strong>Revenue protection</strong> - Maintain premium pricing through quality</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-number">7/8</div>
+        </div>
+
+        <!-- Slide 8: Call to Action -->
+        <div class="slide slide-8">
+            <div class="slide-content" style="text-align: center;">
+                <h2>Transform Your Network Performance</h2>
+                <p style="font-size: 2em; margin: 40px 0;">Ready to optimize your telecom infrastructure?</p>
+                <div class="results-grid" style="max-width: 1000px; margin: 40px auto;">
+                    <div class="metric-card">
+                        <div class="metric-label">Performance Gains</div>
+                        <div class="metric-value" style="font-size: 2.5em;">20-25%</div>
+                        <div class="metric-label">Latency & packet loss reduction</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Implementation</div>
+                        <div class="metric-value" style="font-size: 2.5em;">Rapid</div>
+                        <div class="metric-label">Software-only deployment</div>
+                    </div>
+                </div>
+                <div class="highlight-box" style="max-width: 900px; margin: 60px auto;">
+                    <h3 style="margin-bottom: 30px;">Schedule a Network Assessment</h3>
+                    <p style="font-size: 1.6em; margin: 20px 0;"><strong>Robin Macomber</strong></p>
+                    <p style="font-size: 1.3em; margin: 15px 0;">
+                        <a href="../../index.html#two" style="color: #00d4ff; text-decoration: none; border-bottom: 2px solid #00d4ff;">relationalrelativity@gmail.com</a>
+                    </p>
+                    <p style="font-size: 1.3em; margin: 15px 0;">805-621-0987</p>
+                </div>
+                <p style="font-size: 1.2em; color: #aaa; margin-top: 50px; font-style: italic;">
+                    Relational Relativity LLC — Optimizing Networks Through Mathematics
+                </p>
+            </div>
+            <div class="slide-number">8/8</div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn">← Previous</button>
+        <button class="nav-btn" id="nextBtn">Next →</button>
+    </div>
+
+    <a href="../../index.html" class="home-btn">🏠 Home</a>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+        }
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+            if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+        });
+    </script>
+</body>
+</html>

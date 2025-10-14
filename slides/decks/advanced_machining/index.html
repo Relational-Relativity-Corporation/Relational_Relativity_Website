@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRR Multi-Operation Process Optimization</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 100px;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            color: #00d4ff;
+        }
+
+        h3 {
+            font-size: 1.7em;
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+
+        p, li {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.6em;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .metric-card {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 3.5em;
+            font-weight: bold;
+            color: #00ff88;
+            margin: 15px 0;
+        }
+
+        .metric-label {
+            font-size: 1.3em;
+            color: #aaa;
+        }
+
+        .problem-list {
+            background: rgba(255, 50, 50, 0.1);
+            border-left: 5px solid #ff3232;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+
+        .solution-list {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 5px solid #00ff88;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        ul li:before {
+            content: "▸ ";
+            color: #00d4ff;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            margin-top: 40px;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.4em;
+        }
+
+        .comparison-table th {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            font-size: 1.6em;
+        }
+
+        .improvement {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 153, 255, 0.2) 100%);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 25px 0;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid #00d4ff;
+            color: white;
+            padding: 20px 30px;
+            font-size: 1.5em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            pointer-events: all;
+        }
+
+        .nav-btn:hover {
+            background: #00d4ff;
+            color: #0a0a0a;
+            transform: scale(1.1);
+        }
+
+        .home-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid #00d4ff;
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1001;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .home-btn:hover {
+            background: #00d4ff;
+            color: #0a0a0a;
+            transform: scale(1.05);
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .cta {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            border: none;
+            color: white;
+            padding: 25px 60px;
+            font-size: 1.8em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 40px;
+            font-weight: bold;
+        }
+
+        .cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .roi-box {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2) 0%, rgba(0, 212, 255, 0.2) 100%);
+            border: 3px solid #00ff88;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            font-size: 2em;
+            margin: 40px 0;
+        }
+
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .phase-card {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .phase-number {
+            font-size: 3em;
+            color: #00ff88;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active slide-1">
+            <div class="slide-content">
+                <h1>Multi-Operation Process Optimization</h1>
+                <p class="subtitle">Using Quantized Relational Reality (QRR) Field Analysis</p>
+                <p style="font-size: 2em; margin-top: 60px;">Turn Physics into Profit for High-Value Aerospace Components</p>
+                <div class="highlight-box" style="margin-top: 60px;">
+                    <p style="font-size: 2.2em; text-align: center;"><strong>$322,514</strong> Annual Savings on 150 Parts</p>
+                    <p style="font-size: 1.8em; text-align: center; color: #aaa; margin-top: 20px;">Ti-6Al-4V Landing Gear Components</p>
+                </div>
+            </div>
+            <div class="slide-number">1/10</div>
+        </div>
+
+        <!-- Slide 2: The Problem -->
+        <div class="slide slide-2">
+            <div class="slide-content">
+                <h2>The Problem</h2>
+                <p style="font-size: 2em; margin-bottom: 40px;">Conventional machining treats each operation independently</p>
+                <div class="problem-list">
+                    <h3>Critical Issues Overlooked:</h3>
+                    <ul style="font-size: 1.4em;">
+                        <li>Work hardening persists from one operation to the next</li>
+                        <li>Residual stress accumulates and causes distortion</li>
+                        <li>Thermal damage compromises downstream operations</li>
+                        <li>Aggressive roughing destroys finishing capability</li>
+                    </ul>
+                </div>
+                <div class="highlight-box" style="margin-top: 50px;">
+                    <p style="font-size: 2em; text-align: center;">Ti-6Al-4V can work harden <strong>30-50%</strong></p>
+                    <p style="font-size: 1.5em; text-align: center; color: #aaa; margin-top: 15px;">From 33 HRC → 45 HRC after aggressive cutting</p>
+                </div>
+            </div>
+            <div class="slide-number">2/10</div>
+        </div>
+
+        <!-- Slide 3: The Impact -->
+        <div class="slide slide-3">
+            <div class="slide-content">
+                <h2>The Impact</h2>
+                <p style="font-size: 2em; margin-bottom: 40px;">For difficult materials like Ti-6Al-4V titanium:</p>
+                <div class="results-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Tool Life Reduction</div>
+                        <div class="metric-value">3-5×</div>
+                        <div class="metric-label">Faster wear on hardened surfaces</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Forging Cost</div>
+                        <div class="metric-value">$8,500</div>
+                        <div class="metric-label">18-week lead time</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Critical Tolerance</div>
+                        <div class="metric-value">±0.0005"</div>
+                        <div class="metric-label">On bearing bores (12.7 microns)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Scrap Impact</div>
+                        <div class="metric-value">Catastrophic</div>
+                        <div class="metric-label">One lost part = major loss</div>
+                    </div>
+                </div>
+                <p style="font-size: 1.8em; margin-top: 60px; text-align: center; color: #ff6666;">
+                    Conventional planning "saves" hours in Op10... then loses the part in Op40
+                </p>
+            </div>
+            <div class="slide-number">3/10</div>
+        </div>
+
+        <!-- Slide 4: The Solution -->
+        <div class="slide slide-4">
+            <div class="slide-content">
+                <h2>The QRR Solution</h2>
+                <p style="font-size: 2em; margin-bottom: 40px;">Multi-operation field modeling optimizes the ENTIRE process</p>
+                <div class="solution-list">
+                    <h3>Key Physics Modeled:</h3>
+                    <ul style="font-size: 1.4em;">
+                        <li>Work hardening accumulation across operations</li>
+                        <li>Tool life degradation on hardened surfaces</li>
+                        <li>Tolerance capability and dimensional stability</li>
+                        <li>Thermal effects in low-conductivity materials</li>
+                    </ul>
+                </div>
+                <div class="highlight-box" style="margin-top: 50px;">
+                    <h3 style="text-align: center; margin-bottom: 30px;">The Strategy</h3>
+                    <p style="font-size: 2em; text-align: center;">Accept slower roughing to enable faster, more reliable downstream operations</p>
+                </div>
+                <p style="font-size: 1.6em; margin-top: 40px; text-align: center; font-style: italic;">
+                    "What Op10 parameters create the optimal state for Op20, Op30, and Op40 to succeed?"
+                </p>
+            </div>
+            <div class="slide-number">4/10</div>
+        </div>
+
+        <!-- Slide 5: Results Comparison -->
+        <div class="slide slide-5">
+            <div class="slide-content">
+                <h2>Case Study Results</h2>
+                <p class="subtitle">Ti-6Al-4V Landing Gear Torsion Link</p>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Conventional</th>
+                            <th>QRR-Optimized</th>
+                            <th>Improvement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cost per Part</td>
+                            <td>$12,828</td>
+                            <td>$10,478</td>
+                            <td class="improvement">-$2,150 (17%)</td>
+                        </tr>
+                        <tr>
+                            <td>Op40 Failure Risk</td>
+                            <td>15.4%</td>
+                            <td>12.1%</td>
+                            <td class="improvement">-3.3 points</td>
+                        </tr>
+                        <tr>
+                            <td>Surface Hardness (Op40)</td>
+                            <td>45.2 HRC</td>
+                            <td>41.8 HRC</td>
+                            <td class="improvement">-3.4 HRC</td>
+                        </tr>
+                        <tr>
+                            <td>Annual Savings (150 parts)</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td class="improvement">$322,514</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="roi-box">
+                    <strong>ROI: 4:1</strong> — Spend $540 in extra Op10 time, save $2,150 total per part
+                </div>
+            </div>
+            <div class="slide-number">5/10</div>
+        </div>
+
+        <!-- Slide 6: Where Savings Come From -->
+        <div class="slide slide-6">
+            <div class="slide-content">
+                <h2>Where the Savings Come From</h2>
+                <div class="results-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Tool Cost Reduction</div>
+                        <div class="metric-value">$2,569</div>
+                        <p style="font-size: 1.2em; margin-top: 20px;">Better tool life from optimized parameters across all operations</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Scrap Risk Reduction</div>
+                        <div class="metric-value">$328</div>
+                        <p style="font-size: 1.2em; margin-top: 20px;">Improved Op40 tolerance capability on $8,500 forgings</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Machine Time Trade-off</div>
+                        <div class="metric-value">-$540</div>
+                        <p style="font-size: 1.2em; margin-top: 20px;">Op10 takes 4 extra hours at $150/hr shop rate</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Net Savings</div>
+                        <div class="metric-value">$2,150</div>
+                        <p style="font-size: 1.2em; margin-top: 20px;">17% cost reduction per part</p>
+                    </div>
+                </div>
+                <p style="font-size: 1.8em; margin-top: 60px; text-align: center; color: #00ff88;">
+                    The "extra" machine time is MORE than offset by tool and scrap savings
+                </p>
+            </div>
+            <div class="slide-number">6/10</div>
+        </div>
+
+        <!-- Slide 7: The Critical Op40 -->
+        <div class="slide slide-7">
+            <div class="slide-content">
+                <h2>Why Op40 is Critical</h2>
+                <p style="font-size: 2em; margin-bottom: 40px;">Bearing bore tolerance: ±0.0005" (12.7 microns)</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 50px;">
+                    <div class="problem-list">
+                        <h3>Conventional Strategy</h3>
+                        <p style="font-size: 1.4em; margin: 20px 0;">Surface entering Op40: <strong>45.2 HRC</strong></p>
+                        <ul style="font-size: 1.3em;">
+                            <li>Reamer wears rapidly (3-5 bores)</li>
+                            <li>Chatter risk increases</li>
+                            <li>Cannot reliably hold tolerance</li>
+                            <li><strong style="color: #ff6666;">15.4% failure risk</strong></li>
+                        </ul>
+                    </div>
+                    <div class="solution-list">
+                        <h3>QRR-Optimized Strategy</h3>
+                        <p style="font-size: 1.4em; margin: 20px 0;">Surface entering Op40: <strong>41.8 HRC</strong></p>
+                        <ul style="font-size: 1.3em;">
+                            <li>Reamer life extends (30-35 bores)</li>
+                            <li>Stable cutting conditions</li>
+                            <li>Tolerance capability maintained</li>
+                            <li><strong style="color: #00ff88;">12.1% failure risk</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 60px;">
+                    <p style="font-size: 2.2em; text-align: center;">The 3.4 HRC difference makes or breaks this operation</p>
+                </div>
+            </div>
+            <div class="slide-number">7/10</div>
+        </div>
+
+        <!-- Slide 8: Ideal Candidates -->
+        <div class="slide slide-8">
+            <div class="slide-content">
+                <h2>When Does This Work?</h2>
+                <div class="solution-list">
+                    <h3>Ideal Candidate Parts:</h3>
+                    <ul style="font-size: 1.4em;">
+                        <li><strong>Difficult Materials:</strong> Titanium alloys, Inconel, hardened steels</li>
+                        <li><strong>Multi-Operation:</strong> 3+ operations with state propagation</li>
+                        <li><strong>High Stakes:</strong> Expensive forgings ($5,000+), long lead times</li>
+                        <li><strong>Tight Tolerances:</strong> ±0.001" or tighter on critical features</li>
+                        <li><strong>Current Pain:</strong> "We nail Op10-20, then fail in Op30-40"</li>
+                    </ul>
+                </div>
+                <div class="problem-list" style="margin-top: 40px;">
+                    <h3>Not Ideal For:</h3>
+                    <ul style="font-size: 1.3em;">
+                        <li>High-volume, simple parts</li>
+                        <li>Soft, easy-to-machine materials (aluminum 6061, mild steel)</li>
+                        <li>Single or 2-operation processes</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-number">8/10</div>
+        </div>
+
+        <!-- Slide 9: Our Process -->
+        <div class="slide slide-9">
+            <div class="slide-content">
+                <h2>How We Work With You</h2>
+                <div class="phase-grid">
+                    <div class="phase-card">
+                        <div class="phase-number">1</div>
+                        <h3>Analysis</h3>
+                        <p style="font-size: 1.2em; margin-top: 15px;">1-2 weeks</p>
+                        <ul style="font-size: 1.1em; margin-top: 20px;">
+                            <li>Multi-operation field analysis</li>
+                            <li>Critical coupling points</li>
+                            <li>Predicted savings</li>
+                            <li>Process recommendations</li>
+                        </ul>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-number">2</div>
+                        <h3>Validation</h3>
+                        <p style="font-size: 1.2em; margin-top: 15px;">2-4 weeks</p>
+                        <ul style="font-size: 1.1em; margin-top: 20px;">
+                            <li>Test parts with optimized parameters</li>
+                            <li>Measure actual results</li>
+                            <li>Refine predictions</li>
+                            <li>Validate cost savings</li>
+                        </ul>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-number">3</div>
+                        <h3>Implementation</h3>
+                        <p style="font-size: 1.2em; margin-top: 15px;">Ongoing</p>
+                        <ul style="font-size: 1.1em; margin-top: 20px;">
+                            <li>Process documentation</li>
+                            <li>Operator training</li>
+                            <li>Monitoring & adjustment</li>
+                            <li>Additional parts</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 60px;">
+                    <p style="font-size: 2em; text-align: center;"><strong>Our Philosophy:</strong> We only make money if you make money</p>
+                    <p style="font-size: 1.4em; text-align: center; margin-top: 20px; color: #aaa;">Success fee based on demonstrated savings</p>
+                </div>
+            </div>
+            <div class="slide-number">9/10</div>
+        </div>
+
+        <!-- Slide 10: Call to Action -->
+        <div class="slide slide-10">
+            <div class="slide-content" style="text-align: center;">
+                <h2>Is This Relevant to Your Shop?</h2>
+                <div class="solution-list" style="text-align: left; max-width: 1000px; margin: 60px auto;">
+                    <h3>Questions to Ask Yourself:</h3>
+                    <ul style="font-size: 1.4em;">
+                        <li>Do we machine titanium, Inconel, or other difficult materials?</li>
+                        <li>Do we have parts with 3+ operations where later ops are problematic?</li>
+                        <li>Are we experiencing unpredictable scrap/rework on tight-tolerance features?</li>
+                        <li>Do finishing operations struggle with surfaces from aggressive roughing?</li>
+                        <li>Would saving $2,000-5,000 per part be meaningful to our business?</li>
+                    </ul>
+                </div>
+                <p style="font-size: 2.2em; margin: 60px 0 40px 0;">If you answered "yes" to 3+ questions, let's talk.</p>
+                <button class="cta" onclick="window.location.href='../../index.html#two'">Schedule Initial Consultation</button>
+                <p style="font-size: 1.4em; margin-top: 30px; color: #aaa;">No charge • Problem part assessment • ROI estimate</p>
+            </div>
+            <div class="slide-number">10/10</div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn">← Previous</button>
+        <button class="nav-btn" id="nextBtn">Next →</button>
+    </div>
+
+    <a href="../../index.html" class="home-btn">🏠 Home</a>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+        }
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+            if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+        });
+    </script>
+</body>
+</html>
