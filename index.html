@@ -1,164 +1,430 @@
-<!DOCTYPE HTML>
-<!--
-    Hyperspace by HTML5 UP
-    html5up.net | @ajlkn
-    Free for personal and commercial use under the CCA 3.0 license
--->
-<html>
-    <head>
-        <title>Relational Relativity LLC</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="../../../assets/css/main.css" />
-        <noscript><link rel="stylesheet" href="../../../assets/css/noscript.css" /></noscript>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metatron Dynamics</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --bg3: #181818;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #f0ede6;
+    --muted: #888783;
+    --accent: #c9b97a;
+    --accent2: #7a9ec9;
+    --mono: 'Courier New', monospace;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+  }
 
-        <style>
-            #intro {
-                background-image: url('../../../images/Telecommunications.jpg');
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                position: relative;
-            }
-            #intro::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0, 0, 0, 0.6);
-                z-index: 0;
-            }
-            #intro .inner {
-                position: relative;
-                z-index: 1;
-            }
-        </style>
-    </head>
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-brand {
+    font-size: 14px; font-weight: 500; letter-spacing: 0.08em;
+    color: var(--accent); text-decoration: none; text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px; color: var(--muted); text-decoration: none;
+    letter-spacing: 0.04em; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
 
-    <body class="is-preload">
+  /* Sections */
+  section { padding: 6rem 2rem; max-width: 860px; margin: 0 auto; }
+  section + section { border-top: 0.5px solid var(--border); }
 
-        <!-- Sidebar -->
-        <section id="sidebar">
-            <div class="inner">
-                <nav>
-                    <ul>
-                        <li><a href="#intro">Welcome</a></li>
-                        <li><a href="#one">What We Do</a></li>
-                        <li><a href="#two">Get in Touch</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </section>
+  /* Hero */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 56px;
+    max-width: 860px;
+  }
+  .hero-label {
+    font-size: 12px; letter-spacing: 0.14em; color: var(--accent);
+    text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 400; line-height: 1.18;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+  .hero-sub {
+    font-size: 1.1rem; color: var(--muted); max-width: 600px;
+    margin-bottom: 2.5rem; line-height: 1.8;
+  }
+  .hero-cta {
+    display: inline-flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block; padding: 0.6rem 1.4rem;
+    font-size: 13px; letter-spacing: 0.05em;
+    text-decoration: none; border-radius: 3px;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--accent); color: #0a0a0a; font-weight: 500;
+  }
+  .btn-primary:hover { background: #e0d08e; }
+  .btn-outline {
+    border: 0.5px solid var(--border2); color: var(--muted);
+  }
+  .btn-outline:hover { border-color: var(--muted); color: var(--text); }
 
-        <!-- Wrapper -->
-        <div id="wrapper">
+  /* Section headers */
+  .section-label {
+    font-size: 11px; letter-spacing: 0.16em; color: var(--accent);
+    text-transform: uppercase; margin-bottom: 1rem;
+  }
+  h2 {
+    font-size: 1.6rem; font-weight: 400;
+    letter-spacing: -0.01em; margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+  h3 {
+    font-size: 1.05rem; font-weight: 500;
+    margin-bottom: 0.5rem; color: var(--text);
+  }
+  p { color: var(--muted); margin-bottom: 1rem; }
+  p:last-child { margin-bottom: 0; }
 
-            <!-- Intro -->
-            <section id="intro" class="wrapper style1 fullscreen fade-up">
-                <div class="inner">
-                    <h1>Relational Relativity LLC</h1>
-                    <p>
-                        We help software developers and development teams learn how to reduce structural complexity in the systems they build.
-                    </p>
-                    <p>
-                        This work is not about automation, tools, or eliminating developers. It is a disciplined way of structuring software so that stability and clarity emerge from the design itself, rather than being enforced through layers of defensive control logic.
-                    </p>
-                    <p>
-                        The approach is non-trivial and must be learned and practiced, much like learning to reason about concurrency, numerical stability, or distributed systems. It is not a shortcut, but a shift in how developers reason about structure and responsibility at scale.
-                    </p>
-                    <p>
-                        The examples presented here are intentionally small, concrete, and runnable. Their purpose is not to impress or persuade, but to make a different way of reasoning about complexity visible—often prompting the question: "How would I learn to do this in my own work?"
-                    </p>
-                    <p>
-                        The value of these examples is not that they can be copied directly, but that they reveal a structural posture toward complexity that developers and teams can learn, practice, and apply across domains.
-                    </p>
-                    <ul class="actions">
-                        <li><a href="#one" class="button scrolly">Learn more</a></li>
-                    </ul>
-                </div>
-            </section>
+  /* Framework block */
+  .kernel-block {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+  .kernel-eq {
+    font-family: var(--mono);
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.04em;
+  }
+  .operator-chain {
+    display: flex; align-items: center; gap: 0.5rem;
+    flex-wrap: wrap; margin-bottom: 1.5rem;
+  }
+  .op {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px;
+    background: var(--bg3); border: 0.5px solid var(--border2);
+    border-radius: 4px;
+    font-family: var(--mono); font-size: 14px; font-weight: 500;
+    color: var(--accent2);
+  }
+  .op-arrow { color: var(--muted); font-size: 12px; }
+  .domain-block {
+    font-family: var(--mono); font-size: 13px;
+    color: var(--muted); line-height: 1.9;
+    border-left: 2px solid var(--border2); padding-left: 1rem;
+    margin-top: 1.5rem;
+  }
 
-            <!-- Section One: What We Do -->
-            <section id="one" class="wrapper style2 fade-up">
-                <div class="inner">
-                    <h2>What We Do</h2>
-                    <p>The following public repositories serve as teaching artifacts. Each example is intentionally minimal and designed to make a structural shift visible—often prompting the question: "How would I learn to do this in my own work?"</p>
-                    
-                    <div class="features">
-                        <!-- EDITABLE SECTION: Add/modify repository links below -->
-                        <section>
-                            <h3>Structure vs Control</h3>
-                            <p>
-                                <a href="https://github.com/Relational-Relativity-Corporation/structure-vs-control" target="_blank">
-                                    https://github.com/Relational-Relativity-Corporation/structure-vs-control
-                                </a>
-                            </p>
-                            <p>
-                                A minimal, runnable example showing how embedding invariants directly into structure can eliminate defensive control logic while producing the same numerical results.
-                            </p>
-                        </section>
-                        
-                        <section>
-                            <h3>Error Handling by Structure</h3>
-                            <p>
-                                <a href="https://github.com/Relational-Relativity-Corporation/error-handling-by-structure" target="_blank">
-                                    https://github.com/Relational-Relativity-Corporation/error-handling-by-structure
-                                </a>
-                            </p>
-                            <p>
-                                Demonstrates how encoding constraints into structure localizes validation to construction boundaries, eliminating entire categories of defensive error-handling logic downstream.
-                            </p>
-                        </section>
-                        
-                        <section>
-                            <h3>Structure Compounds</h3>
-                            <p>
-                                <a href="https://github.com/Relational-Relativity-Corporation/structure-compounds" target="_blank">
-                                    https://github.com/Relational-Relativity-Corporation/structure-compounds
-                                </a>
-                            </p>
-                            <p>
-                                Shows how structural constraints compound to reduce total system complexity as requirements grow, and why this transformation cannot be achieved through incremental refactoring.
-                            </p>
-                        </section>
-                        <!-- END EDITABLE SECTION -->
-                    </div>
-                </div>
-            </section>
+  /* Documents */
+  .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .doc-card {
+    background: var(--bg2); border: 0.5px solid var(--border);
+    border-radius: 6px; padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .doc-card:hover { border-color: var(--border2); }
+  .doc-type {
+    font-size: 11px; letter-spacing: 0.12em; color: var(--accent);
+    text-transform: uppercase; margin-bottom: 0.75rem;
+  }
+  .doc-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+  .doc-card p { font-size: 14px; line-height: 1.65; margin-bottom: 1rem; }
+  .doc-card a {
+    font-size: 12px; color: var(--accent2);
+    text-decoration: none; letter-spacing: 0.04em;
+  }
+  .doc-card a:hover { text-decoration: underline; }
 
-            <!-- Section Two: Contact -->
-            <section id="two" class="wrapper style1 fade-up">
-                <div class="inner">
-                    <h2>Get in touch</h2>
-                    <p>Interested in learning more about this approach or discussing how it applies to real systems and teams? Please use the form below to start the conversation—we'd be glad to hear from you.</p>
-                    <ul class="actions">
-                        <li><a href="mailto:relationalrelativity@gmail.com" class="button">Contact Us</a></li>
-                    </ul>
-                </div>
-            </section>
+  /* Demos table */
+  .demo-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+  .demo-table th {
+    font-size: 11px; letter-spacing: 0.1em; color: var(--muted);
+    text-transform: uppercase; text-align: left;
+    padding: 0.5rem 1rem; border-bottom: 0.5px solid var(--border);
+    font-weight: 400;
+  }
+  .demo-table td {
+    padding: 1rem; font-size: 14px;
+    border-bottom: 0.5px solid var(--border);
+    vertical-align: top;
+  }
+  .demo-table tr:last-child td { border-bottom: none; }
+  .demo-table td:first-child a {
+    color: var(--accent2); text-decoration: none; font-family: var(--mono); font-size: 13px;
+  }
+  .demo-table td:first-child a:hover { text-decoration: underline; }
+  .demo-table td:nth-child(2) { color: var(--muted); }
+  .lead-badge {
+    display: inline-block;
+    background: rgba(201,185,122,0.1); color: var(--accent);
+    border: 0.5px solid rgba(201,185,122,0.25);
+    border-radius: 3px; padding: 2px 8px;
+    font-size: 12px; font-family: var(--mono); white-space: nowrap;
+  }
 
-        </div>
+  /* About */
+  .team-row {
+    display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+  }
+  .team-pill {
+    background: var(--bg2); border: 0.5px solid var(--border);
+    border-radius: 4px; padding: 0.5rem 1rem;
+    font-size: 14px;
+  }
+  .team-pill span { color: var(--muted); font-size: 13px; margin-left: 0.5rem; }
+  .note-block {
+    background: var(--bg2); border-left: 2px solid var(--border2);
+    padding: 1rem 1.25rem; border-radius: 0 4px 4px 0;
+    font-size: 14px; color: var(--muted); margin-top: 2rem;
+  }
 
-        <!-- Footer -->
-        <footer id="footer" class="wrapper style1-alt">
-            <div class="inner">
-                <ul class="menu">
-                    <li>&copy; 2025 RR LLC. All rights reserved.</li>
-                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                </ul>
-            </div>
-        </footer>
+  /* Footer */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 2rem; text-align: center;
+    font-size: 13px; color: var(--muted);
+  }
+  footer a { color: var(--muted); }
 
-        <!-- Scripts -->
-        <script src="../../../assets/js/jquery.min.js"></script>
-        <script src="../../../assets/js/jquery.scrollex.min.js"></script>
-        <script src="../../../assets/js/jquery.scrolly.min.js"></script>
-        <script src="../../../assets/js/browser.min.js"></script>
-        <script src="../../../assets/js/breakpoints.min.js"></script>
-        <script src="../../../assets/js/util.js"></script>
-        <script src="../../../assets/js/main.js"></script>
+  @media (max-width: 600px) {
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1.25rem; }
+    section { padding: 4rem 1.25rem; }
+    #hero { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .doc-grid { grid-template-columns: 1fr; }
+    .demo-table { font-size: 13px; }
+    .demo-table td { padding: 0.75rem 0.5rem; }
+  }
+</style>
+</head>
+<body>
 
-    </body>
+<nav>
+  <a class="nav-brand" href="#hero">Metatron Dynamics</a>
+  <ul class="nav-links">
+    <li><a href="#framework">Framework</a></li>
+    <li><a href="#documents">Documents</a></li>
+    <li><a href="#demos">Demos</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-label">Deep-Tech · Information Systems</div>
+  <h1>Structural instability<br>declared before it cascades.</h1>
+  <p class="hero-sub">
+    Metatron Dynamics develops domain-declaration and relational-field detection systems
+    that identify regime shifts in complex operational systems before conventional
+    monitoring detects failure.
+  </p>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="#documents">Read the framework</a>
+    <a class="btn btn-outline" href="https://github.com/Relational-Relativity-Corporation" target="_blank">GitHub →</a>
+  </div>
+</section>
+
+<!-- Problem -->
+<section id="problem">
+  <div class="section-label">The admissibility gap</div>
+  <h2>Instability begins before failure is visible</h2>
+  <p>
+    Information systems fail when processing begins without a declared operational domain.
+    The outputs remain locally valid — passing every check — while the system drifts toward
+    a boundary it cannot see. By the time conventional monitoring detects the anomaly,
+    the cascade is already in motion.
+  </p>
+  <p>
+    This is not a failure of tooling or vigilance. It is a structural consequence of
+    beginning information processing without declaring the domain within which outputs
+    are valid. Metatron Dynamics calls this the <em>admissibility gap</em> — and demonstrates
+    that it is the common cause underlying supply chain cascade failures, machine learning
+    model drift, financial contagion, and large language model generation drift.
+  </p>
+</section>
+
+<!-- Framework -->
+<section id="framework">
+  <div class="section-label">ABRCE</div>
+  <h2>A formal framework for domain declaration</h2>
+  <p>
+    The ABRCE operator framework defines information processing as a composition of
+    operators applied in strict canonical sequence. All statements are bounded over the
+    declared domain D. No claim is made beyond D.
+  </p>
+
+  <div class="kernel-block">
+    <div class="kernel-eq">E(x, ρ) = C(R(B(A(x)), ρ))</div>
+    <div class="operator-chain">
+      <div class="op">A</div>
+      <div class="op-arrow">→</div>
+      <div class="op">B</div>
+      <div class="op-arrow">→</div>
+      <div class="op">R</div>
+      <div class="op-arrow">→</div>
+      <div class="op">C</div>
+      <div class="op-arrow">→</div>
+      <div class="op">E</div>
+    </div>
+    <div class="domain-block">
+      D := { x ∈ ℝⁿ | n &lt; ∞  and  |x[i]| &lt; ∞  ∀ i }<br>
+      All framework claims are bounded over D.
+    </div>
+  </div>
+
+  <p>
+    The declared domain is the operational primitive. When A is initialized first —
+    establishing the domain before any other operator acts — the system has a
+    structurally enforced floor. When B is initialized before A, the failure mode
+    ABRCE is designed to prevent is exactly what occurs.
+  </p>
+</section>
+
+<!-- Documents -->
+<section id="documents">
+  <div class="section-label">Documentation</div>
+  <h2>Foundational documents</h2>
+  <p>
+    Both documents are publicly available in the framework repository.
+    All simulation results cited are verifiable in the demonstration repositories below.
+  </p>
+
+  <div class="doc-grid">
+    <div class="doc-card">
+      <div class="doc-type">Investor document</div>
+      <h3>The Clarity Dividend</h3>
+      <p>
+        The economic case for formal domain declaration as an operational primitive.
+        Documents 88-step and 82-step early warning lead times across independently
+        verified simulation environments. Positions Metatron Dynamics within the lineage
+        of Shannon, Turing, and Wiener.
+      </p>
+      <a href="https://github.com/Relational-Relativity-Corporation/metatron-dynamics-framework/blob/main/The%20Clarity%20Dividend%20%E2%80%94%20Metatron%20Dynamics.pdf" target="_blank">View PDF on GitHub →</a>
+    </div>
+    <div class="doc-card">
+      <div class="doc-type">White paper</div>
+      <h3>Mathematics of Information System Stability</h3>
+      <p>
+        Derives the stability conditions for bounded information processing systems under
+        acceleration. Formalizes the admissibility gap and demonstrates it as the structural
+        common cause underlying cascade failures across independent domains.
+      </p>
+      <a href="https://github.com/Relational-Relativity-Corporation/metatron-dynamics-framework/blob/main/Mathematics%20of%20Information%20System%20Stability%20%E2%80%94%20Metatron%20Dynamics.pdf" target="_blank">View PDF on GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Demos -->
+<section id="demos">
+  <div class="section-label">Verification</div>
+  <h2>Applied demonstrations</h2>
+  <p>
+    Each repository is an applied instance of the stability conditions derived in the
+    framework documentation. Simulation dynamics are built and verified independently
+    before ABRCE detection is layered on top. All results are publicly reproducible.
+  </p>
+
+  <table class="demo-table">
+    <thead>
+      <tr>
+        <th>Repository</th>
+        <th>Domain</th>
+        <th>Lead time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://github.com/Relational-Relativity-Corporation/supply-chain-early-warning-demo" target="_blank">supply-chain-early-warning-demo</a></td>
+        <td>Multi-agent supply chain simulation — ABRCE field detection on temporal difference field δ(t)</td>
+        <td><span class="lead-badge">88 steps</span></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/Relational-Relativity-Corporation/robotics-instability-detection-demo" target="_blank">robotics-instability-detection-demo</a></td>
+        <td>Discrete-time multi-robot simulation — early detection of load imbalance before system failure</td>
+        <td><span class="lead-badge">82 steps</span></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/Relational-Relativity-Corporation/relational-rate-limiter" target="_blank">relational-rate-limiter</a></td>
+        <td>Replaces 9 conditional branches in a production token bucket with 5 bounded update operator calls — zero branches, proven correctness</td>
+        <td><span class="lead-badge">—</span></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/Relational-Relativity-Corporation/bounded-update-controller" target="_blank">bounded-update-controller</a></td>
+        <td>Replaces multi-branch controller logic with a single bounded update operator that enforces magnitude constraints by construction</td>
+        <td><span class="lead-badge">—</span></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/Relational-Relativity-Corporation/bounded-plasticity-simulation" target="_blank">bounded-plasticity-simulation</a></td>
+        <td>Invariant relational magnitude constraints replacing conditional branching — yields provable stability regimes</td>
+        <td><span class="lead-badge">—</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2>Metatron Dynamics</h2>
+
+  <div class="team-row">
+    <div class="team-pill">Robin Macomber <span>Founder</span></div>
+    <div class="team-pill">Bruce Stephenson <span>CTO · Energy Physics</span></div>
+  </div>
+
+  <p>
+    Metatron Dynamics is a deep-technology company built around the ABRCE invariant
+    relational kernel — a mathematically rigorous information processing framework for
+    declaring operational domains and detecting structural instability in complex systems.
+  </p>
+  <p>
+    The open-source portfolio is maintained at
+    <a href="https://github.com/Relational-Relativity-Corporation" target="_blank" style="color: var(--accent2);">Relational-Relativity-Corporation</a>
+    on GitHub.
+    Inquiries: <a href="mailto:relationalrelativity@gmail.com" style="color: var(--accent2);">relationalrelativity@gmail.com</a>
+  </p>
+
+  <div class="note-block">
+    Metatron Dynamics is currently incorporating from Relational Relativity LLC.
+    All framework documentation, repositories, and demonstrations are continuous with
+    prior work conducted under that entity. The incorporation does not alter the
+    mathematical framework.
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Metatron Dynamics &nbsp;·&nbsp; <a href="https://github.com/Relational-Relativity-Corporation" target="_blank">GitHub</a></p>
+</footer>
+
+</body>
 </html>
