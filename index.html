@@ -480,6 +480,7 @@
           Environmental Mesonet and NDBC buoy feeds.
         </p>
         <div class="card-meta">
+          <span class="app-badge badge-lead">ABR operators</span>
           <span class="app-badge badge-market">Weather &amp; Aviation</span>
           <span class="app-badge badge-market">Agriculture</span>
           <span class="app-badge badge-market">Insurance</span>
@@ -535,6 +536,7 @@
           visible behavioral failure events.
         </p>
         <div class="card-meta">
+          <span class="app-badge badge-lead">ABRCE operators</span>
           <span class="app-badge badge-market">AI Safety</span>
           <span class="app-badge badge-market">LLM Governance</span>
           <span class="app-badge badge-status">Verified</span>
@@ -559,6 +561,7 @@
           that scalar geomagnetic indices cannot resolve.
         </p>
         <div class="card-meta">
+          <span class="app-badge badge-lead">ABR operators</span>
           <span class="app-badge badge-market">Space Weather</span>
           <span class="app-badge badge-market">Satellite Operations</span>
           <span class="app-badge badge-market">Defense</span>
@@ -582,6 +585,7 @@
           instability is unreachable by construction.
         </p>
         <div class="card-meta">
+          <span class="app-badge badge-lead">ABRCE operators</span>
           <span class="app-badge badge-market">Autonomous Flight</span>
           <span class="app-badge badge-market">Surveillance</span>
           <span class="app-badge badge-market">Agriculture</span>
@@ -726,6 +730,17 @@
     a structurally enforced floor. When B is initialized before A, the failure mode ABRCE
     is designed to prevent is exactly what occurs. The framework enforces admissibility,
     not correctness&mdash;ensuring the system can only operate within declared boundaries.
+  </p>
+
+  <p>
+    The operator sequence has a natural division. <strong>ABR</strong> (Anchor, Bind,
+    Resolve) constitutes the observational core&mdash;sufficient for detecting relational
+    structure in natural systems such as atmospheric dynamics and magnetospheric coupling,
+    where the system evolves on its own terms and the task is structural observation.
+    <strong>ABRCE</strong> extends this with Converge and Evolve operators for engineered
+    systems&mdash;supply chains, robotics fleets, LLM pipelines, flight controllers&mdash;where
+    bounded output and governed evolution are required. The distinction is principled:
+    natural systems are observed under ABR; engineered systems are governed under ABRCE.
   </p>
   <p>
     Mathematical foundations published on arXiv
