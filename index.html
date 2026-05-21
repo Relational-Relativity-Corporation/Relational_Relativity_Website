@@ -52,8 +52,11 @@
     height: 56px;
   }
   .nav-brand {
-    font-size: 14px; font-weight: 500; letter-spacing: 0.08em;
-    color: var(--accent); text-decoration: none; text-transform: uppercase;
+    display: flex; align-items: center;
+    text-decoration: none;
+  }
+  .nav-brand img {
+    height: 30px; width: auto;
   }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
@@ -72,6 +75,10 @@
     display: flex; flex-direction: column; justify-content: center;
     padding-top: 56px;
     max-width: 860px;
+  }
+  .hero-logo {
+    width: 140px; height: auto;
+    margin-bottom: 2rem;
   }
   .hero-label {
     font-size: 12px; letter-spacing: 0.14em; color: var(--accent);
@@ -377,6 +384,7 @@
     .nav-links a { font-size: 12px; }
     section { padding: 4rem 1.25rem; }
     #hero { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .hero-logo { width: 100px; }
     .doc-grid { grid-template-columns: 1fr; }
     .revenue-grid { grid-template-columns: 1fr; }
     .team-grid { grid-template-columns: 1fr; }
@@ -392,7 +400,9 @@
 <body>
 
 <nav>
-  <a class="nav-brand" href="#hero">Metatron Dynamics</a>
+  <a class="nav-brand" href="#hero">
+    <img src="images/Metatron_Dynamics_logo.png" alt="Metatron Dynamics">
+  </a>
   <ul class="nav-links">
     <li><a href="#applications">Applications</a></li>
     <li><a href="#market">Market</a></li>
@@ -407,6 +417,7 @@
      HERO
      ═══════════════════════════════════════════ -->
 <section id="hero">
+  <img class="hero-logo" src="images/Metatron_Dynamics_logo.png" alt="Metatron Dynamics">
   <div class="hero-label">Deep-Tech &middot; Information Systems &middot; Delaware C-Corp</div>
   <h1>We detect system failures<br>before they cascade.</h1>
   <p class="hero-sub">
@@ -480,7 +491,6 @@
           Environmental Mesonet and NDBC buoy feeds.
         </p>
         <div class="card-meta">
-          <span class="app-badge badge-lead">ABR operators</span>
           <span class="app-badge badge-market">Weather &amp; Aviation</span>
           <span class="app-badge badge-market">Agriculture</span>
           <span class="app-badge badge-market">Insurance</span>
@@ -536,7 +546,6 @@
           visible behavioral failure events.
         </p>
         <div class="card-meta">
-          <span class="app-badge badge-lead">ABRCE operators</span>
           <span class="app-badge badge-market">AI Safety</span>
           <span class="app-badge badge-market">LLM Governance</span>
           <span class="app-badge badge-status">Verified</span>
@@ -561,7 +570,6 @@
           that scalar geomagnetic indices cannot resolve.
         </p>
         <div class="card-meta">
-          <span class="app-badge badge-lead">ABR operators</span>
           <span class="app-badge badge-market">Space Weather</span>
           <span class="app-badge badge-market">Satellite Operations</span>
           <span class="app-badge badge-market">Defense</span>
@@ -585,7 +593,6 @@
           instability is unreachable by construction.
         </p>
         <div class="card-meta">
-          <span class="app-badge badge-lead">ABRCE operators</span>
           <span class="app-badge badge-market">Autonomous Flight</span>
           <span class="app-badge badge-market">Surveillance</span>
           <span class="app-badge badge-market">Agriculture</span>
@@ -730,17 +737,6 @@
     a structurally enforced floor. When B is initialized before A, the failure mode ABRCE
     is designed to prevent is exactly what occurs. The framework enforces admissibility,
     not correctness&mdash;ensuring the system can only operate within declared boundaries.
-  </p>
-
-  <p>
-    The operator sequence has a natural division. <strong>ABR</strong> (Anchor, Bind,
-    Resolve) constitutes the observational core&mdash;sufficient for detecting relational
-    structure in natural systems such as atmospheric dynamics and magnetospheric coupling,
-    where the system evolves on its own terms and the task is structural observation.
-    <strong>ABRCE</strong> extends this with Converge and Evolve operators for engineered
-    systems&mdash;supply chains, robotics fleets, LLM pipelines, flight controllers&mdash;where
-    bounded output and governed evolution are required. The distinction is principled:
-    natural systems are observed under ABR; engineered systems are governed under ABRCE.
   </p>
   <p>
     Mathematical foundations published on arXiv
