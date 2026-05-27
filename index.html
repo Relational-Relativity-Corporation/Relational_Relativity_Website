@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Metatron Dynamics</title>
-<meta name="description" content="Structural instability detection for complex systems. Domain-declaration technology that identifies regime shifts 80+ steps before conventional monitoring.">
+<meta name="description" content="Structural instability detection for complex systems. Domain-declaration technology that identifies regime shifts before conventional monitoring.">
 <meta property="og:title" content="Metatron Dynamics &mdash; Structural Instability, Declared Before It Cascades">
 <meta property="og:description" content="Domain-declaration technology that detects system failures before they cascade. Three revenue streams. Proven lead times. Raising on SAFE.">
 <meta property="og:type" content="website">
@@ -146,6 +146,41 @@
   p { color: var(--muted); margin-bottom: 1rem; }
   p:last-child { margin-bottom: 0; }
 
+  /* Featured repos banner */
+  .featured-repos {
+    background: var(--bg2);
+    border: 0.5px solid rgba(201,185,122,0.2);
+    border-radius: 6px;
+    padding: 1.5rem 2rem;
+    margin: 2rem 0 2.5rem 0;
+  }
+  .featured-repos .featured-label {
+    font-size: 11px; letter-spacing: 0.14em; color: var(--accent);
+    text-transform: uppercase; margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .featured-repo-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+  }
+  .featured-repo-item {
+    display: flex; flex-direction: column; gap: 0.25rem;
+    padding: 0.75rem;
+    background: var(--bg3);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    transition: border-color 0.2s;
+  }
+  .featured-repo-item:hover { border-color: var(--border2); }
+  .featured-repo-item a {
+    font-family: var(--mono); font-size: 12px; color: var(--accent2);
+    text-decoration: none; font-weight: 500;
+  }
+  .featured-repo-item a:hover { text-decoration: underline; }
+  .featured-repo-item .repo-desc {
+    font-size: 11px; color: var(--muted); line-height: 1.5;
+  }
+
   /* Application cards — featured */
   .app-grid {
     display: grid; grid-template-columns: 1fr;
@@ -195,6 +230,10 @@
   .badge-lead {
     background: rgba(201,185,122,0.1); color: var(--accent);
     border: 0.5px solid rgba(201,185,122,0.25);
+  }
+  .badge-new {
+    background: rgba(201,122,122,0.12); color: #c9907a;
+    border: 0.5px solid rgba(201,122,122,0.25);
   }
   .app-card-side {
     display: flex; flex-direction: column; gap: 0.5rem;
@@ -395,6 +434,7 @@
     .safe-row { gap: 1.5rem; }
     .app-card { grid-template-columns: 1fr; }
     .app-card-side { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+    .featured-repo-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -452,6 +492,29 @@
     </div>
   </div>
 
+  <!-- Featured repos for conference visitors -->
+  <div class="featured-repos">
+    <div class="featured-label">Featured Repositories &mdash; Snowflake Summit 2026</div>
+    <div class="featured-repo-grid">
+      <div class="featured-repo-item">
+        <a href="https://github.com/Relational-Relativity-Corporation/abr-vs-knowledge-graph" target="_blank" rel="noopener">abr-vs-knowledge-graph</a>
+        <span class="repo-desc">ABR field operators vs. declared graph structure &mdash; supply chain comparison</span>
+      </div>
+      <div class="featured-repo-item">
+        <a href="https://github.com/Relational-Relativity-Corporation/abr-weather-monitor" target="_blank" rel="noopener">abr-weather-monitor</a>
+        <span class="repo-desc">3-topology ABRCE on NOAA/ASOS/METAR raw observations</span>
+      </div>
+      <div class="featured-repo-item">
+        <a href="https://github.com/Relational-Relativity-Corporation/abr-magnetosphere-comparison" target="_blank" rel="noopener">abr-magnetosphere-comparison</a>
+        <span class="repo-desc">Vector operators on magnetospheric dynamics in SM/MLT coordinates</span>
+      </div>
+      <div class="featured-repo-item">
+        <a href="https://github.com/Relational-Relativity-Corporation/abr-alignment-monitor" target="_blank" rel="noopener">abr-alignment-monitor</a>
+        <span class="repo-desc">Structural divergence detection on transformer internal dynamics</span>
+      </div>
+    </div>
+  </div>
+
   <div class="hero-cta">
     <a class="btn btn-primary" href="#market">Investment Terms</a>
     <a class="btn btn-outline" href="#applications">See Applications</a>
@@ -473,10 +536,131 @@
 
   <div class="app-grid">
 
-    <!-- Weather Analysis -->
+    <!-- ABR vs Knowledge Graph — FLAGSHIP -->
     <div class="app-card">
       <div>
-        <div class="card-label">Atmospheric Detection</div>
+        <div class="card-label">Supply Chain &middot; V4 Topology</div>
+        <h3>ABR vs. Knowledge Graph</h3>
+        <p>
+          Direct comparison isolating the representational distinction between
+          continuous topology-conditioned field operators and explicitly declared
+          relationship processing. 8-node supply chain simulation with Shanghai
+          supplier delay scenario. ABR detects field restructuring at t=31&mdash;before
+          the perturbation has physically arrived at any downstream node. Graph
+          system traces node-by-node from t=32 to t=73.
+        </p>
+        <p>
+          V4 topology discipline: every application declares its own spatial and
+          component topology through Origin. No topological default. Undeclared
+          topology is inadmissible.
+        </p>
+        <div class="card-meta">
+          <span class="app-badge badge-market">Supply Chain</span>
+          <span class="app-badge badge-market">Graph Analytics</span>
+          <span class="app-badge badge-market">Data Infrastructure</span>
+          <span class="app-badge badge-new">V4 &middot; New</span>
+        </div>
+        <a class="card-link" href="https://github.com/Relational-Relativity-Corporation/abr-vs-knowledge-graph" target="_blank" rel="noopener">View Repository &rarr;</a>
+      </div>
+      <div class="app-card-side">
+        <span class="app-badge badge-lead">t=31 detection</span>
+        <span class="app-badge badge-lead">8-node DAG</span>
+        <span class="app-badge badge-lead">5 components</span>
+      </div>
+    </div>
+
+    <!-- ABR Weather Monitor -->
+    <div class="app-card">
+      <div>
+        <div class="card-label">Atmospheric Detection &middot; V4 Topology</div>
+        <h3>ABR Weather Monitor</h3>
+        <p>
+          Three-topology ABRCE operator structure applied to raw atmospheric
+          observations: proximity graph on stations, component topology on
+          temperature/pressure/humidity/wind/precipitation, and temporal topology
+          on hourly observations. NOAA/ASOS/METAR public data, raw observations
+          only&mdash;no gridding or model analysis fields.
+        </p>
+        <p>
+          Predictions: component coupling dominates &Gamma;, frontal passages produce
+          &Delta;P<sub>&Gamma;</sub> spikes, relational organization shifts before
+          scalar magnitude peaks.
+        </p>
+        <div class="card-meta">
+          <span class="app-badge badge-market">Weather &amp; Aviation</span>
+          <span class="app-badge badge-market">Agriculture</span>
+          <span class="app-badge badge-market">Insurance</span>
+          <span class="app-badge badge-new">V4 &middot; New</span>
+        </div>
+        <a class="card-link" href="https://github.com/Relational-Relativity-Corporation/abr-weather-monitor" target="_blank" rel="noopener">View Repository &rarr;</a>
+      </div>
+      <div class="app-card-side">
+        <span class="app-badge badge-lead">3 topologies</span>
+        <span class="app-badge badge-lead">Raw obs only</span>
+      </div>
+    </div>
+
+    <!-- ABR Magnetosphere Comparison -->
+    <div class="app-card">
+      <div>
+        <div class="card-label">Space Weather &amp; Defense &middot; V4 Topology</div>
+        <h3>ABR Magnetosphere Comparison</h3>
+        <p>
+          ABRCE operators applied to magnetospheric dynamics in source-native
+          coordinates (SM/MLT). Spherical harmonic decomposition (degree 1&ndash;3/4+),
+          per-component unit scaling, and vector operators. First positive result:
+          vector R component with &sigma;&sup2;=1.119 at geomagnetic storm peak.
+          Detects coupling structure that scalar geomagnetic indices cannot resolve.
+        </p>
+        <p>
+          Open condition: R component coupling must use source-native coordinates,
+          not geographic. High-order residual C saturation under investigation.
+        </p>
+        <div class="card-meta">
+          <span class="app-badge badge-market">Space Weather</span>
+          <span class="app-badge badge-market">Satellite Operations</span>
+          <span class="app-badge badge-market">Defense</span>
+          <span class="app-badge badge-new">V4 &middot; New</span>
+        </div>
+        <a class="card-link" href="https://github.com/Relational-Relativity-Corporation/abr-magnetosphere-comparison" target="_blank" rel="noopener">View Repository &rarr;</a>
+      </div>
+      <div class="app-card-side">
+        <span class="app-badge badge-lead">&sigma;&sup2; = 1.119</span>
+        <span class="app-badge badge-lead">SM/MLT coords</span>
+      </div>
+    </div>
+
+    <!-- ABR Alignment Monitor -->
+    <div class="app-card">
+      <div>
+        <div class="card-label">AI Safety &middot; V4 Topology</div>
+        <h3>ABR Alignment Monitor</h3>
+        <p>
+          Structural divergence detection on transformer internal dynamics.
+          ABRCE operators applied to the temporal difference field &delta;(t)
+          detect observed structural divergence preceding or occurring independently
+          of visible behavioral failure events. Demonstrates that standard EWS
+          statistics are structurally incapable of utilizing ABRCE-introduced
+          information because they start from incompatible primitives.
+        </p>
+        <div class="card-meta">
+          <span class="app-badge badge-market">AI Safety</span>
+          <span class="app-badge badge-market">LLM Governance</span>
+          <span class="app-badge badge-market">Model Observability</span>
+          <span class="app-badge badge-new">V4 &middot; New</span>
+        </div>
+        <a class="card-link" href="https://github.com/Relational-Relativity-Corporation/abr-alignment-monitor" target="_blank" rel="noopener">View Repository &rarr;</a>
+      </div>
+      <div class="app-card-side">
+        <span class="app-badge badge-lead">88 steps</span>
+        <span class="app-badge badge-lead">1088-dim</span>
+      </div>
+    </div>
+
+    <!-- Weather Analysis (original dashboard) -->
+    <div class="app-card">
+      <div>
+        <div class="card-label">Atmospheric Detection &middot; Dashboard</div>
         <h3>Relational Weather Analysis</h3>
         <p>
           Operator-based structural analysis of atmospheric observations on an irregular
@@ -536,10 +720,10 @@
       </div>
     </div>
 
-    <!-- LLM Alignment Drift -->
+    <!-- LLM Alignment Drift (original demo) -->
     <div class="app-card">
       <div>
-        <div class="card-label">AI Safety</div>
+        <div class="card-label">AI Safety &middot; Original Demo</div>
         <h3>Alignment Drift Detection</h3>
         <p>
           915 tagged prompts generate 1088-dimensional state vectors from Phi-3 Mini.
@@ -560,30 +744,7 @@
       </div>
     </div>
 
-    <!-- Magnetospheric Mapping — COMING LATER TODAY -->
-    <div class="app-card coming-soon">
-      <div>
-        <div class="card-label">Space Weather &amp; Defense</div>
-        <h3>Magnetospheric Structural Mapping</h3>
-        <p>
-          ABRCE operators applied to magnetospheric dynamics in source-native
-          coordinates (SM/MLT). First positive result: vector R component with
-          &sigma;&sup2;=1.119 at geomagnetic storm peak. Detects coupling structure
-          that scalar geomagnetic indices cannot resolve.
-        </p>
-        <div class="card-meta">
-          <span class="app-badge badge-market">Space Weather</span>
-          <span class="app-badge badge-market">Satellite Operations</span>
-          <span class="app-badge badge-market">Defense</span>
-        </div>
-        <p style="font-size: 12px; color: var(--accent); margin-top: 0.75rem; font-style: italic;">Repository publishing today</p>
-      </div>
-      <div class="app-card-side">
-        <span class="app-badge badge-lead">&sigma;&sup2; = 1.119</span>
-      </div>
-    </div>
-
-    <!-- Atmospheric Airship Drone — COMING LATER TODAY -->
+    <!-- Atmospheric Airship Drone — COMING SOON -->
     <div class="app-card coming-soon">
       <div>
         <div class="card-label">Autonomous Systems</div>
@@ -599,7 +760,7 @@
           <span class="app-badge badge-market">Surveillance</span>
           <span class="app-badge badge-market">Agriculture</span>
         </div>
-        <p style="font-size: 12px; color: var(--accent); margin-top: 0.75rem; font-style: italic;">Repository publishing today</p>
+        <p style="font-size: 12px; color: var(--accent); margin-top: 0.75rem; font-style: italic;">Repository publishing soon</p>
       </div>
       <div class="app-card-side"></div>
     </div>
@@ -767,6 +928,26 @@
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><a href="https://github.com/Relational-Relativity-Corporation/abr-vs-knowledge-graph" target="_blank" rel="noopener">abr-vs-knowledge-graph</a></td>
+        <td>V4 supply chain &mdash; ABR field operators vs. declared graph structure on 8-node DAG</td>
+        <td><span class="lead-badge">t=31</span></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/Relational-Relativity-Corporation/abr-weather-monitor" target="_blank" rel="noopener">abr-weather-monitor</a></td>
+        <td>3-topology ABRCE on NOAA/ASOS/METAR raw observations &mdash; proximity, component, temporal</td>
+        <td><span class="lead-badge">Live</span></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/Relational-Relativity-Corporation/abr-magnetosphere-comparison" target="_blank" rel="noopener">abr-magnetosphere-comparison</a></td>
+        <td>Vector ABRCE on magnetospheric dynamics &mdash; SM/MLT coordinates, SH decomposition</td>
+        <td><span class="lead-badge">&sigma;&sup2;=1.119</span></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/Relational-Relativity-Corporation/abr-alignment-monitor" target="_blank" rel="noopener">abr-alignment-monitor</a></td>
+        <td>Structural divergence on transformer internals &mdash; EWS incompatibility demonstration</td>
+        <td><span class="lead-badge">88 steps</span></td>
+      </tr>
       <tr>
         <td><a href="https://github.com/Relational-Relativity-Corporation/supply-chain-early-warning-demo" target="_blank" rel="noopener">supply-chain-early-warning-demo</a></td>
         <td>Multi-agent supply chain &mdash; ABRCE field detection on temporal difference field &delta;(t)</td>
