@@ -332,36 +332,6 @@
     font-size: 12px; font-family: var(--mono); white-space: nowrap;
   }
 
-  /* Team */
-  .team-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 1.5rem; margin: 2rem 0;
-  }
-  .team-card {
-    background: var(--bg2); border: 0.5px solid var(--border);
-    border-radius: 6px; padding: 1.5rem;
-  }
-  .team-card h3 { margin-bottom: 0.25rem; }
-  .team-card .role {
-    font-size: 13px; color: var(--accent); margin-bottom: 0.75rem;
-    letter-spacing: 0.04em;
-  }
-  .team-card p { font-size: 14px; line-height: 1.65; }
-
-  /* Entity info */
-  .entity-block {
-    background: var(--bg2); border: 0.5px solid var(--border);
-    border-radius: 6px; padding: 1.5rem; margin-top: 2rem;
-  }
-  .entity-block p { font-size: 14px; }
-  .entity-row {
-    display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 0.75rem;
-  }
-  .entity-item {
-    font-size: 13px; font-family: var(--mono); color: var(--muted);
-  }
-  .entity-item span { color: var(--text); }
-
   /* Contact */
   #contact { text-align: center; }
   #contact p { max-width: 520px; margin-left: auto; margin-right: auto; }
@@ -387,7 +357,6 @@
     .hero-logo { width: 200px; }
     .doc-grid { grid-template-columns: 1fr; }
     .revenue-grid { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr; }
     .demo-table { font-size: 13px; }
     .demo-table td { padding: 0.75rem 0.5rem; }
     .hero-stat-row { gap: 1.5rem; }
@@ -409,7 +378,6 @@
     <li><a href="#market">Market</a></li>
     <li><a href="#solution">How It Works</a></li>
     <li><a href="#proof">Proof</a></li>
-    <li><a href="#team">Team</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -832,41 +800,6 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     TEAM
-     ═══════════════════════════════════════════ -->
-<section id="team">
-  <div class="section-label">Team</div>
-  <h2>Metatron Dynamics, Inc.</h2>
-
-  <div class="team-grid">
-    <div class="team-card">
-      <h3>Robin Macomber</h3>
-      <div class="role">Founder &amp; Principal Researcher</div>
-      <p>
-        Fourteen years of formal scientific research in theoretical physics, machine
-        learning, biological systems, and applied engineering. Professional background
-        in offshore drilling, precision manufacturing, clinical psychology, and audio
-        engineering. Developer of the ABRCE operator framework and the Origin Training
-        Protocol. Published relational mathematics on arXiv.
-      </p>
-    </div>
-  </div>
-
-  <div class="entity-block">
-    <p style="color: var(--text); font-weight: 500; margin-bottom: 0.5rem;">Corporate Entity</p>
-    <p>
-      Metatron Dynamics, Inc. &mdash; Delaware C-Corporation. All framework documentation,
-      repositories, and demonstrations are continuous with prior work conducted under
-      Relational Relativity LLC.
-    </p>
-    <div class="entity-row">
-      <div class="entity-item">File No. <span>10551645</span></div>
-      <div class="entity-item">State <span>Delaware</span></div>
-      <div class="entity-item">Type <span>C-Corporation</span></div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════════════════════════════════
      CONTACT
@@ -875,8 +808,8 @@
   <div class="section-label">Get in touch</div>
   <h2>Inquiries &amp; investment conversations</h2>
   <p>
-    We welcome inquiries from investors, potential consulting clients, and
-    organizations interested in the Origin Training Protocol or MAPD deployment.
+    We welcome inquiries from investors and potential consulting clients across
+    insurance, medical instrumentation, weather, and robotics.
   </p>
   <div class="contact-links">
     <a class="btn btn-primary" href="mailto:relationalrelativity@gmail.com">relationalrelativity@gmail.com</a>
