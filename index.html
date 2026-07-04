@@ -146,41 +146,6 @@
   p { color: var(--muted); margin-bottom: 1rem; }
   p:last-child { margin-bottom: 0; }
 
-  /* Featured repos banner */
-  .featured-repos {
-    background: var(--bg2);
-    border: 0.5px solid rgba(201,185,122,0.2);
-    border-radius: 6px;
-    padding: 1.5rem 2rem;
-    margin: 2rem 0 2.5rem 0;
-  }
-  .featured-repos .featured-label {
-    font-size: 11px; letter-spacing: 0.14em; color: var(--accent);
-    text-transform: uppercase; margin-bottom: 1rem;
-    font-weight: 500;
-  }
-  .featured-repo-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 0.75rem;
-  }
-  .featured-repo-item {
-    display: flex; flex-direction: column; gap: 0.25rem;
-    padding: 0.75rem;
-    background: var(--bg3);
-    border: 0.5px solid var(--border);
-    border-radius: 4px;
-    transition: border-color 0.2s;
-  }
-  .featured-repo-item:hover { border-color: var(--border2); }
-  .featured-repo-item a {
-    font-family: var(--mono); font-size: 12px; color: var(--accent2);
-    text-decoration: none; font-weight: 500;
-  }
-  .featured-repo-item a:hover { text-decoration: underline; }
-  .featured-repo-item .repo-desc {
-    font-size: 11px; color: var(--muted); line-height: 1.5;
-  }
-
   /* Application cards — featured */
   .app-grid {
     display: grid; grid-template-columns: 1fr;
@@ -239,11 +204,6 @@
     display: flex; flex-direction: column; gap: 0.5rem;
     align-items: flex-end; min-width: 120px;
   }
-  .app-card.coming-soon {
-    opacity: 0.55;
-    border-style: dashed;
-  }
-  .app-card.coming-soon:hover { opacity: 0.7; }
 
   /* Framework block */
   .kernel-block {
@@ -434,7 +394,6 @@
     .safe-row { gap: 1.5rem; }
     .app-card { grid-template-columns: 1fr; }
     .app-card-side { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
-    .featured-repo-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -473,45 +432,22 @@
     valuable is the same complexity that makes them fail.
   </p>
   <p class="hero-sub" style="font-size: 0.95rem;">
-    One mathematical framework. Applied to weather, supply chains, robotics,
-    LLM alignment, magnetospheric dynamics, and autonomous flight systems.
+    One mathematical framework. Applied to life insurance, medical imaging,
+    atmospheric monitoring, and robotics fleet operations.
   </p>
 
   <div class="hero-stat-row">
     <div class="hero-stat">
-      <div class="num">88</div>
-      <div class="label">Step lead time &middot; supply chain</div>
+      <div class="num">31.6&times;</div>
+      <div class="label">Relational spread &middot; insurance</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">4.9 hr</div>
+      <div class="label">Lead time &middot; weather</div>
     </div>
     <div class="hero-stat">
       <div class="num">82</div>
       <div class="label">Step lead time &middot; robotics</div>
-    </div>
-    <div class="hero-stat">
-      <div class="num">88</div>
-      <div class="label">Step lead time &middot; LLM drift</div>
-    </div>
-  </div>
-
-  <!-- Featured repos for conference visitors -->
-  <div class="featured-repos">
-    <div class="featured-label">Featured Repositories &mdash; Snowflake Summit 2026</div>
-    <div class="featured-repo-grid">
-      <div class="featured-repo-item">
-        <a href="https://github.com/Relational-Relativity-Corporation/abr-vs-knowledge-graph" target="_blank" rel="noopener">abr-vs-knowledge-graph</a>
-        <span class="repo-desc">ABR field operators vs. declared graph structure &mdash; supply chain comparison</span>
-      </div>
-      <div class="featured-repo-item">
-        <a href="https://github.com/Relational-Relativity-Corporation/abr-weather-monitor" target="_blank" rel="noopener">abr-weather-monitor</a>
-        <span class="repo-desc">3-topology ABRCE on NOAA/ASOS/METAR raw observations</span>
-      </div>
-      <div class="featured-repo-item">
-        <a href="https://github.com/Relational-Relativity-Corporation/abr-magnetosphere-comparison" target="_blank" rel="noopener">abr-magnetosphere-comparison</a>
-        <span class="repo-desc">Vector operators on magnetospheric dynamics in SM/MLT coordinates</span>
-      </div>
-      <div class="featured-repo-item">
-        <a href="https://github.com/Relational-Relativity-Corporation/abr-alignment-monitor" target="_blank" rel="noopener">abr-alignment-monitor</a>
-        <span class="repo-desc">Structural divergence detection on transformer internal dynamics</span>
-      </div>
     </div>
   </div>
 
@@ -527,242 +463,111 @@
      ═══════════════════════════════════════════ -->
 <section id="applications">
   <div class="section-label">Applied Systems</div>
-  <h2>Deployable applications of a single mathematical core</h2>
+  <h2>Four independent domains. Four verified results. One underlying capability.</h2>
   <p>
-    Every system below runs on the same ABRCE operator framework. The mathematics
-    is domain-general; the applications are domain-specific. Each represents a
-    deployable product surface or an active consulting engagement pathway.
+    Insurance, medical imaging, meteorology, and robotics share no domain knowledge&mdash;yet
+    all four currently discard relational coupling structure before computing. The same
+    invariant operator sequence is applied without domain-specific modification across all
+    four; only the declared observables and relations change.
   </p>
 
   <div class="app-grid">
 
-    <!-- ABR vs Knowledge Graph — FLAGSHIP -->
+    <!-- Life Insurance -->
     <div class="app-card">
       <div>
-        <div class="card-label">Supply Chain &middot; V4 Topology</div>
-        <h3>ABR vs. Knowledge Graph</h3>
+        <div class="card-label">Life Insurance &middot; Actuarial Risk</div>
+        <h3>Shock Lapse Detection</h3>
         <p>
-          Direct comparison isolating the representational distinction between
-          continuous topology-conditioned field operators and explicitly declared
-          relationship processing. 8-node supply chain simulation with Shanghai
-          supplier delay scenario. ABR detects field restructuring at t=31&mdash;before
-          the perturbation has physically arrived at any downstream node. Graph
-          system traces node-by-node from t=32 to t=73.
-        </p>
-        <p>
-          V4 topology discipline: every application declares its own spatial and
-          component topology through Origin. No topological default. Undeclared
-          topology is inadmissible.
+          Standard actuarial models respond after aggregate rates move. The structural
+          fracturing across policy cells&mdash;the precursor&mdash;is invisible to
+          cell-local methods. ABRCE operators detect relational spread elevation
+          before rates shift. Every assumption declared. Every exclusion documented.
+          Regulator-presentable.
         </p>
         <div class="card-meta">
-          <span class="app-badge badge-market">Supply Chain</span>
-          <span class="app-badge badge-market">Graph Analytics</span>
-          <span class="app-badge badge-market">Data Infrastructure</span>
-          <span class="app-badge badge-new">V4 &middot; New</span>
+          <span class="app-badge badge-market">Life Insurance</span>
+          <span class="app-badge badge-market">Actuarial Risk</span>
+          <span class="app-badge badge-status">Verified</span>
         </div>
-        <a class="card-link" href="https://github.com/Relational-Relativity-Corporation/abr-vs-knowledge-graph" target="_blank" rel="noopener">View Repository &rarr;</a>
       </div>
       <div class="app-card-side">
-        <span class="app-badge badge-lead">t=31 detection</span>
-        <span class="app-badge badge-lead">8-node DAG</span>
-        <span class="app-badge badge-lead">5 components</span>
+        <span class="app-badge badge-lead">31.6&times; spread</span>
+        <span class="app-badge badge-lead">SOA data</span>
       </div>
     </div>
 
-    <!-- ABR Weather Monitor -->
+    <!-- Medical Instrumentation -->
     <div class="app-card">
       <div>
-        <div class="card-label">Atmospheric Detection &middot; V4 Topology</div>
+        <div class="card-label">Medical Instrumentation &middot; Emergency Care</div>
+        <h3>Bedside NMR Sensor</h3>
+        <p>
+          Epidural hematoma and perfusion failure are time-critical. Conventional MRI
+          cannot be deployed bedside in an ER. A segmented receiver array operating at
+          low field strength detects tissue boundaries from water content contrast alone&mdash;no
+          Fourier transform, no averaging&mdash;producing an ER-deployable imaging instrument.
+        </p>
+        <div class="card-meta">
+          <span class="app-badge badge-market">Medical Instrumentation</span>
+          <span class="app-badge badge-market">Emergency Care</span>
+          <span class="app-badge badge-status">Verified</span>
+        </div>
+      </div>
+      <div class="app-card-side">
+        <span class="app-badge badge-lead">14.97&times; boundary</span>
+        <span class="app-badge badge-lead">SNR &gt;129K</span>
+      </div>
+    </div>
+
+    <!-- Weather -->
+    <div class="app-card">
+      <div>
+        <div class="card-label">Predictive Infrastructure &middot; Weather</div>
         <h3>ABR Weather Monitor</h3>
         <p>
-          Three-topology ABRCE operator structure applied to raw atmospheric
-          observations: proximity graph on stations, component topology on
-          temperature/pressure/humidity/wind/precipitation, and temporal topology
-          on hourly observations. NOAA/ASOS/METAR public data, raw observations
-          only&mdash;no gridding or model analysis fields.
-        </p>
-        <p>
-          Predictions: component coupling dominates &Gamma;, frontal passages produce
-          &Delta;P<sub>&Gamma;</sub> spikes, relational organization shifts before
-          scalar magnitude peaks.
+          Numerical forecasting collapses atmospheric coupling into scalar fields before
+          the model runs. The relational organization of the station network&mdash;the
+          earliest signal&mdash;is discarded first. Raw NOAA station data processed
+          directly across a proximity network. No gridded fields. No model analysis.
+          No parameters tuned to the result.
         </p>
         <div class="card-meta">
           <span class="app-badge badge-market">Weather &amp; Aviation</span>
           <span class="app-badge badge-market">Agriculture</span>
           <span class="app-badge badge-market">Insurance</span>
-          <span class="app-badge badge-new">V4 &middot; New</span>
+          <span class="app-badge badge-status">Verified</span>
         </div>
         <a class="card-link" href="https://github.com/Relational-Relativity-Corporation/abr-weather-monitor" target="_blank" rel="noopener">View Repository &rarr;</a>
       </div>
       <div class="app-card-side">
-        <span class="app-badge badge-lead">3 topologies</span>
-        <span class="app-badge badge-lead">Raw obs only</span>
+        <span class="app-badge badge-lead">4.9 hr lead</span>
+        <span class="app-badge badge-lead">42/42 positive</span>
       </div>
     </div>
 
-    <!-- ABR Magnetosphere Comparison -->
+    <!-- Robotics -->
     <div class="app-card">
       <div>
-        <div class="card-label">Space Weather &amp; Defense &middot; V4 Topology</div>
-        <h3>ABR Magnetosphere Comparison</h3>
+        <div class="card-label">Robotics &middot; Fleet Operations</div>
+        <h3>Fleet Instability Detection</h3>
         <p>
-          ABRCE operators applied to magnetospheric dynamics in source-native
-          coordinates (SM/MLT). Spherical harmonic decomposition (degree 1&ndash;3/4+),
-          per-component unit scaling, and vector operators. First positive result:
-          vector R component with &sigma;&sup2;=1.119 at geomagnetic storm peak.
-          Detects coupling structure that scalar geomagnetic indices cannot resolve.
-        </p>
-        <p>
-          Open condition: R component coupling must use source-native coordinates,
-          not geographic. High-order residual C saturation under investigation.
+          Scalar monitoring of individual actuator performance misses the coupling
+          degradation across the fleet that precedes failure. By the time a single
+          unit triggers an alert, the cascade is already in motion. Relational
+          coupling structure monitored continuously across all fleet members produces
+          structural warning well before any individual unit reaches failure threshold.
         </p>
         <div class="card-meta">
-          <span class="app-badge badge-market">Space Weather</span>
-          <span class="app-badge badge-market">Satellite Operations</span>
-          <span class="app-badge badge-market">Defense</span>
-          <span class="app-badge badge-new">V4 &middot; New</span>
-        </div>
-        <a class="card-link" href="https://github.com/Relational-Relativity-Corporation/abr-magnetosphere-comparison" target="_blank" rel="noopener">View Repository &rarr;</a>
-      </div>
-      <div class="app-card-side">
-        <span class="app-badge badge-lead">&sigma;&sup2; = 1.119</span>
-        <span class="app-badge badge-lead">SM/MLT coords</span>
-      </div>
-    </div>
-
-    <!-- ABR Alignment Monitor -->
-    <div class="app-card">
-      <div>
-        <div class="card-label">AI Safety &middot; V4 Topology</div>
-        <h3>ABR Alignment Monitor</h3>
-        <p>
-          Structural divergence detection on transformer internal dynamics.
-          ABRCE operators applied to the temporal difference field &delta;(t)
-          detect observed structural divergence preceding or occurring independently
-          of visible behavioral failure events. Demonstrates that standard EWS
-          statistics are structurally incapable of utilizing ABRCE-introduced
-          information because they start from incompatible primitives.
-        </p>
-        <div class="card-meta">
-          <span class="app-badge badge-market">AI Safety</span>
-          <span class="app-badge badge-market">LLM Governance</span>
-          <span class="app-badge badge-market">Model Observability</span>
-          <span class="app-badge badge-new">V4 &middot; New</span>
-        </div>
-        <a class="card-link" href="https://github.com/Relational-Relativity-Corporation/abr-alignment-monitor" target="_blank" rel="noopener">View Repository &rarr;</a>
-      </div>
-      <div class="app-card-side">
-        <span class="app-badge badge-lead">88 steps</span>
-        <span class="app-badge badge-lead">1088-dim</span>
-      </div>
-    </div>
-
-    <!-- Weather Analysis (original dashboard) -->
-    <div class="app-card">
-      <div>
-        <div class="card-label">Atmospheric Detection &middot; Dashboard</div>
-        <h3>Relational Weather Analysis</h3>
-        <p>
-          Operator-based structural analysis of atmospheric observations on an irregular
-          station graph. Seven ASOS/AWOS stations and two offshore buoys in the Santa
-          Barbara County region. ABRCE operators process raw observational sensor data
-          directly&mdash;before forecast-model aggregation layers are introduced&mdash;to
-          detect organized circulation structure, moisture convergence, and
-          precipitation-relevant regime shifts. Designed as a complementary structural
-          observability layer alongside existing forecasting infrastructure.
-        </p>
-        <p>
-          Includes interactive dashboard with time-slider visualization across 48-hour
-          analysis windows. No API keys. No external dependencies. Live data from Iowa
-          Environmental Mesonet and NDBC buoy feeds.
-        </p>
-        <div class="card-meta">
-          <span class="app-badge badge-market">Weather &amp; Aviation</span>
-          <span class="app-badge badge-market">Agriculture</span>
-          <span class="app-badge badge-market">Insurance</span>
-          <span class="app-badge badge-status">Live data</span>
-        </div>
-        <a class="card-link" href="https://github.com/Relational-Relativity-Corporation/relational-weather-analysis" target="_blank" rel="noopener">View Repository &rarr;</a>
-      </div>
-      <div class="app-card-side">
-        <span class="app-badge badge-lead">9 stations</span>
-        <span class="app-badge badge-lead">48hr window</span>
-      </div>
-    </div>
-
-    <!-- Structure vs Control -->
-    <div class="app-card">
-      <div>
-        <div class="card-label">Core Demonstration</div>
-        <h3>Structure vs. Control</h3>
-        <p>
-          A minimal, runnable comparison: two Python programs solve the same convergence
-          problem. One uses conditional branching, clamps, and guards. The other encodes
-          stability directly into the update rule so invalid states are unreachable by
-          construction. Same numerical result. Fundamentally different structural properties.
-        </p>
-        <p>
-          This is the entry point. It demonstrates in thirty seconds what our whitepapers
-          take thirty pages to formalize: the distinction between enforcing correctness
-          through control and achieving stability through structure. Familiar precedents
-          include Bresenham&rsquo;s line algorithm, symplectic integration, and normalization
-          replacing clamping.
-        </p>
-        <div class="card-meta">
-          <span class="app-badge badge-market">Software Architecture</span>
-          <span class="app-badge badge-market">Engineering Education</span>
-          <span class="app-badge badge-status">Python 3 &middot; No deps</span>
-        </div>
-        <a class="card-link" href="https://github.com/Relational-Relativity-Corporation/structure-vs-control" target="_blank" rel="noopener">View Repository &rarr;</a>
-      </div>
-      <div class="app-card-side">
-        <span class="app-badge badge-lead">30-second demo</span>
-      </div>
-    </div>
-
-    <!-- LLM Alignment Drift (original demo) -->
-    <div class="app-card">
-      <div>
-        <div class="card-label">AI Safety &middot; Original Demo</div>
-        <h3>Alignment Drift Detection</h3>
-        <p>
-          915 tagged prompts generate 1088-dimensional state vectors from Phi-3 Mini.
-          ABRCE operators applied to the temporal difference field &delta;(t) detect
-          observed structural divergence preceding or occurring independently of
-          visible behavioral failure events.
-        </p>
-        <div class="card-meta">
-          <span class="app-badge badge-market">AI Safety</span>
-          <span class="app-badge badge-market">LLM Governance</span>
+          <span class="app-badge badge-market">Robotics</span>
+          <span class="app-badge badge-market">Fleet Operations</span>
           <span class="app-badge badge-status">Verified</span>
         </div>
-        <a class="card-link" href="https://github.com/Relational-Relativity-Corporation/abrce-alignment-demo" target="_blank" rel="noopener">View Repository &rarr;</a>
       </div>
       <div class="app-card-side">
-        <span class="app-badge badge-lead">88 steps</span>
-        <span class="app-badge badge-lead">1088-dim</span>
+        <span class="app-badge badge-lead">82 steps</span>
+        <span class="app-badge badge-lead">6-robot fleet</span>
       </div>
-    </div>
-
-    <!-- Atmospheric Airship Drone — COMING SOON -->
-    <div class="app-card coming-soon">
-      <div>
-        <div class="card-label">Autonomous Systems</div>
-        <h3>Atmospheric Airship Drone</h3>
-        <p>
-          ABRCE-governed flight control for lighter-than-air autonomous platforms.
-          Structural stability enforcement replaces conventional PID branching logic
-          with bounded operator evolution&mdash;producing flight controllers where
-          instability is unreachable by construction.
-        </p>
-        <div class="card-meta">
-          <span class="app-badge badge-market">Autonomous Flight</span>
-          <span class="app-badge badge-market">Surveillance</span>
-          <span class="app-badge badge-market">Agriculture</span>
-        </div>
-        <p style="font-size: 12px; color: var(--accent); margin-top: 0.75rem; font-style: italic;">Repository publishing soon</p>
-      </div>
-      <div class="app-card-side"></div>
     </div>
 
   </div>
@@ -773,47 +578,53 @@
      ═══════════════════════════════════════════ -->
 <section id="market">
   <div class="section-label">Market &amp; Revenue</div>
-  <h2>Three revenue streams, one mathematical core</h2>
+  <h2>The addressable market is not a single vertical</h2>
   <p>
-    Every engagement deploys the same ABRCE operator framework. The competitive moat
-    is comprehension&mdash;operational understanding of the mathematics&mdash;not access
-    to the code, which is open-source. This produces a defensibility profile closer
-    to a professional services firm with a proprietary methodology than a traditional
-    software company.
+    It is every industry where coupled system behavior is currently monitored using
+    scalar projections&mdash;which is nearly every domain of commercial consequence.
+    The competitive moat is comprehension: operational understanding of the mathematics,
+    not access to the code, which is open-source.
   </p>
 
   <div class="revenue-grid">
     <div class="revenue-card">
-      <div class="card-label">Stream 1</div>
-      <h3>Decision Systems Consulting</h3>
+      <div class="card-label">Life Insurance &middot; Actuarial Risk</div>
+      <h3>Shock Lapse Early Warning</h3>
       <p>
-        Enterprise engagements applying ABRCE operators to detect structural instability
-        in supply chains, financial systems, robotics fleets, weather operations, and ML
-        pipelines. Delivered as consulting with embedded detection infrastructure.
+        Structural fracturing across policy cells detected before aggregate rates move.
+        Every assumption declared. Every exclusion documented. Regulator-presentable.
       </p>
-      <div class="card-detail">Target: Enterprise &amp; Government</div>
+      <div class="card-detail">31.6&times; relational spread at duration 10 &middot; SOA data</div>
     </div>
 
     <div class="revenue-card">
-      <div class="card-label">Stream 2</div>
-      <h3>Origin Training Protocol</h3>
+      <div class="card-label">Medical Instrumentation &middot; Emergency Care</div>
+      <h3>Bedside NMR Imaging</h3>
       <p>
-        A structured training methodology that teaches organizations to use LLMs as
-        bounded reasoning partners rather than unconstrained generators. Eliminates
-        the admissibility gap at the human-AI interface.
+        ER-deployable tissue boundary detection at low field strength. No Fourier
+        transform. No averaging. Water content contrast alone.
       </p>
-      <div class="card-detail">Target: Organizations adopting LLMs</div>
+      <div class="card-detail">14.97&times; boundary ratio &middot; SNR &gt;129,000 per step</div>
     </div>
 
     <div class="revenue-card">
-      <div class="card-label">Stream 3</div>
-      <h3>MAPD</h3>
+      <div class="card-label">Predictive Infrastructure &middot; Weather</div>
+      <h3>Relational Atmospheric Detection</h3>
       <p>
-        Modular Anthropogenic Processing Depot&mdash;turnkey waste-stream processing
-        systems for municipal and industrial landfills. ABRCE operators manage sorting,
-        contamination, and throughput optimization.
+        Raw NOAA station data processed directly across a proximity network before
+        scalar collapse. No gridded fields. No model analysis. No free parameters.
       </p>
-      <div class="card-detail">$120K&ndash;$240K/yr per site &middot; $130K&ndash;$350K capex</div>
+      <div class="card-detail">4.9 hr mean lead time &middot; 42 of 42 comparisons positive</div>
+    </div>
+
+    <div class="revenue-card">
+      <div class="card-label">Robotics &middot; Fleet Operations</div>
+      <h3>Fleet Instability Detection</h3>
+      <p>
+        Relational coupling structure monitored continuously across all fleet members.
+        Structural warning well before any individual unit reaches failure threshold.
+      </p>
+      <div class="card-detail">82-step lead time &middot; 6-robot task-queue fleet</div>
     </div>
   </div>
 
@@ -848,18 +659,18 @@
   <div class="section-label">The admissibility gap</div>
   <h2>Instability begins before failure is visible</h2>
   <p>
-    Supply chain cascades, machine learning model drift, financial contagion,
-    and LLM generation failures share a common structural cause: processing begins
-    without a declared operational domain. The outputs remain locally valid&mdash;passing
-    every check&mdash;while the system drifts toward a boundary it cannot see.
+    When a life insurer prices shock lapse risk, they see aggregate rates&mdash;not the
+    structural fracturing across policy cells that precedes them. When an ER physician
+    needs to image a trauma patient, the equipment cannot come to the patient. When a
+    weather-dependent business needs to act, the forecast has already collapsed the
+    atmospheric coupling that carried the earliest signal.
   </p>
   <p>
-    By the time conventional monitoring detects the anomaly, the cascade is already
-    in motion. This is not a failure of tooling or vigilance. It is a structural
-    consequence of beginning computation without declaring the domain within which
-    outputs are valid. We call this the <em>admissibility gap</em>&mdash;and we have
-    demonstrated that closing it produces measurable early warning across every
-    domain we have tested.
+    These are not technology failures. They are <em>information failures</em>&mdash;the
+    result of methods that project coupled system behavior into scalar quantities,
+    discarding relational structure before subsequent computation. We call this the
+    <em>admissibility gap</em>. Closing it produces measurable early warning across
+    every domain we have tested.
   </p>
 </section>
 
@@ -929,19 +740,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a href="https://github.com/Relational-Relativity-Corporation/abr-vs-knowledge-graph" target="_blank" rel="noopener">abr-vs-knowledge-graph</a></td>
-        <td>V4 supply chain &mdash; ABR field operators vs. declared graph structure on 8-node DAG</td>
-        <td><span class="lead-badge">t=31</span></td>
-      </tr>
-      <tr>
         <td><a href="https://github.com/Relational-Relativity-Corporation/abr-weather-monitor" target="_blank" rel="noopener">abr-weather-monitor</a></td>
         <td>3-topology ABRCE on NOAA/ASOS/METAR raw observations &mdash; proximity, component, temporal</td>
         <td><span class="lead-badge">Live</span></td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/Relational-Relativity-Corporation/abr-magnetosphere-comparison" target="_blank" rel="noopener">abr-magnetosphere-comparison</a></td>
-        <td>Vector ABRCE on magnetospheric dynamics &mdash; SM/MLT coordinates, SH decomposition</td>
-        <td><span class="lead-badge">&sigma;&sup2;=1.119</span></td>
       </tr>
       <tr>
         <td><a href="https://github.com/Relational-Relativity-Corporation/abr-alignment-monitor" target="_blank" rel="noopener">abr-alignment-monitor</a></td>
@@ -957,11 +758,6 @@
         <td><a href="https://github.com/Relational-Relativity-Corporation/robotics-instability-detection-relational" target="_blank" rel="noopener">robotics-instability-detection-relational</a></td>
         <td>Multi-robot fleet task-queue simulation &mdash; early detection of load imbalance</td>
         <td><span class="lead-badge">82 steps</span></td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/Relational-Relativity-Corporation/abrce-alignment-demo" target="_blank" rel="noopener">abrce-alignment-demo</a></td>
-        <td>LLM alignment drift &mdash; 915 prompts, 1088-dim state vectors, ABRCE on &delta;(t)</td>
-        <td><span class="lead-badge">88 steps</span></td>
       </tr>
       <tr>
         <td><a href="https://github.com/Relational-Relativity-Corporation/relational-weather-analysis" target="_blank" rel="noopener">relational-weather-analysis</a></td>
@@ -1046,23 +842,13 @@
   <div class="team-grid">
     <div class="team-card">
       <h3>Robin Macomber</h3>
-      <div class="role">Founder &amp; President</div>
+      <div class="role">Founder &amp; Principal Researcher</div>
       <p>
         Fourteen years of formal scientific research in theoretical physics, machine
         learning, biological systems, and applied engineering. Professional background
         in offshore drilling, precision manufacturing, clinical psychology, and audio
         engineering. Developer of the ABRCE operator framework and the Origin Training
         Protocol. Published relational mathematics on arXiv.
-      </p>
-    </div>
-    <div class="team-card">
-      <h3>Bruce Stephenson</h3>
-      <div class="role">Co-Founder &amp; CTO</div>
-      <p>
-        Energy physics background. Leads technical architecture and system
-        implementation. Responsible for translating the ABRCE mathematical
-        framework into production-grade detection infrastructure and consulting
-        delivery.
       </p>
     </div>
   </div>
