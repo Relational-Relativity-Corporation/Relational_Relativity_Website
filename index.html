@@ -3,907 +3,967 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Metatron Dynamics</title>
-<meta name="description" content="Structural instability detection for complex systems. Domain-declaration technology that identifies regime shifts before conventional monitoring.">
-<meta property="og:title" content="Metatron Dynamics &mdash; Structural Instability, Declared Before It Cascades">
-<meta property="og:description" content="Domain-declaration technology that detects system failures before they cascade. Three revenue streams. Proven lead times. Raising on SAFE.">
-<meta property="og:type" content="website">
+<meta name="description" content="Metatron Dynamics — Each person is the center of a relational universe unique to their own experience. We build from what can be observed. The difference is not incremental.">
+<meta property="og:title" content="Metatron Dynamics — Each Person Is the Center of a Relational Universe">
+<meta property="og:description" content="The species built abstraction out of necessity. That work brought us here. What becomes possible now is a return to what experience actually presents.">
 <meta property="og:url" content="https://relationalrelativity.dev/">
-<meta property="og:image" content="https://relationalrelativity.dev/images/Metatron_og.png">
-<meta property="og:site_name" content="Metatron Dynamics">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Metatron Dynamics &mdash; Structural Instability, Declared Before It Cascades">
-<meta name="twitter:description" content="Domain-declaration technology that detects system failures before they cascade.">
-<meta name="twitter:image" content="https://relationalrelativity.dev/images/Metatron_og.png">
 <meta name="theme-color" content="#0a0a0a">
+<title>Metatron Dynamics</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   :root {
-    --bg: #0a0a0a;
-    --bg2: #111111;
-    --bg3: #181818;
-    --border: rgba(255,255,255,0.08);
-    --border2: rgba(255,255,255,0.14);
-    --text: #f0ede6;
-    --muted: #888783;
-    --accent: #c9b97a;
-    --accent2: #7a9ec9;
-    --green: #7ac98a;
-    --mono: 'Courier New', monospace;
-    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --black:    #0a0a0a;
+    --surface:  #111111;
+    --surface2: #181818;
+    --rule:     #2a2a2a;
+    --text:     #f0ede6;
+    --muted:    #888880;
+    --gold:     #c9a84c;
+    --gold-dim: #8a6f2e;
+    --white:    #ffffff;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    --mono:     'Courier New', Courier, monospace;
   }
+
   html { scroll-behavior: smooth; }
+
   body {
-    background: var(--bg);
+    background: var(--black);
     color: var(--text);
     font-family: var(--sans);
-    font-size: 16px;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4vw;
+    background: rgba(10,10,10,0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 14vh 4vw 8vh;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+
+  .hero-thesis {
+    font-family: var(--sans);
+    font-size: clamp(2.2rem, 4.6vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 3rem;
+    max-width: 900px;
+  }
+
+  .hero-thesis strong {
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  .hero-body {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 640px;
+    line-height: 1.85;
+    margin-bottom: 3.5rem;
+  }
+
+  .hero-body strong { color: var(--text); font-weight: 500; }
+  .hero-body p + p { margin-top: 1.3rem; }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: #e0bc6a; }
+
+  .btn-secondary {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--text); border-color: var(--muted); }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 8rem 4vw;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 0 4vw;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+
+  .section-heading {
+    font-family: var(--sans);
+    font-size: clamp(1.7rem, 2.8vw, 2.6rem);
+    font-weight: 300;
+    line-height: 1.22;
+    letter-spacing: -0.015em;
+    color: var(--white);
+    margin-bottom: 2rem;
+    max-width: 800px;
+  }
+
+  .section-heading strong { font-weight: 600; }
+
+  .section-body {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 680px;
+    line-height: 1.85;
+  }
+
+  .section-body strong { color: var(--text); font-weight: 500; }
+  .section-body p + p { margin-top: 1.3rem; }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    border-left: 2px solid var(--gold);
+    padding: 1.5rem 2rem;
+    margin: 4rem 0;
+    max-width: 720px;
+  }
+
+  .pull-quote p {
+    font-size: 1.35rem;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── ARC STEPS ── */
+  .origin-arc {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .arc-step {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 2.8rem 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .arc-step:last-child { border-bottom: 1px solid var(--rule); }
+
+  .arc-marker {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    padding-top: 0.2rem;
     line-height: 1.7;
   }
 
-  /* Nav */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(10,10,10,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 0.5px solid var(--border);
-    padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 56px;
+  .arc-text {
+    font-size: 1.02rem;
+    color: var(--muted);
+    line-height: 1.85;
   }
-  .nav-brand {
-    display: flex; align-items: center; gap: 0.6rem;
-    font-size: 14px; font-weight: 500; letter-spacing: 0.08em;
-    color: var(--accent); text-decoration: none; text-transform: uppercase;
-  }
-  .nav-brand img {
-    height: 30px; width: auto;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-size: 13px; color: var(--muted); text-decoration: none;
-    letter-spacing: 0.04em; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
 
-  /* Sections */
-  section { padding: 6rem 2rem; max-width: 860px; margin: 0 auto; }
-  section + section { border-top: 0.5px solid var(--border); }
+  .arc-text strong { color: var(--text); font-weight: 500; }
 
-  /* Hero */
-  #hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding-top: 56px;
-    max-width: 860px;
-  }
-  .hero-logo {
-    width: 280px; height: auto;
-    margin-bottom: 2rem;
-  }
-  .hero-label {
-    font-size: 12px; letter-spacing: 0.14em; color: var(--accent);
-    text-transform: uppercase; margin-bottom: 1.5rem;
-  }
-  h1 {
-    font-size: clamp(2rem, 5vw, 3.4rem);
-    font-weight: 400; line-height: 1.18;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-    color: var(--text);
-  }
-  .hero-sub {
-    font-size: 1.1rem; color: var(--muted); max-width: 620px;
-    margin-bottom: 1rem; line-height: 1.8;
-  }
-  .hero-stat-row {
-    display: flex; gap: 2.5rem; flex-wrap: wrap;
-    margin: 2rem 0 2.5rem 0;
-  }
-  .hero-stat {
-    display: flex; flex-direction: column;
-  }
-  .hero-stat .num {
-    font-family: var(--mono); font-size: 1.8rem; font-weight: 500;
-    color: var(--accent); line-height: 1.2;
-  }
-  .hero-stat .label {
-    font-size: 12px; color: var(--muted); letter-spacing: 0.06em;
-    text-transform: uppercase; margin-top: 0.25rem;
-  }
-  .hero-cta {
-    display: inline-flex; gap: 1rem; flex-wrap: wrap;
-  }
-  .btn {
-    display: inline-block; padding: 0.6rem 1.4rem;
-    font-size: 13px; letter-spacing: 0.05em;
-    text-decoration: none; border-radius: 3px;
-    transition: all 0.2s;
-  }
-  .btn-primary {
-    background: var(--accent); color: #0a0a0a; font-weight: 500;
-  }
-  .btn-primary:hover { background: #e0d08e; }
-  .btn-outline {
-    border: 0.5px solid var(--border2); color: var(--muted);
-  }
-  .btn-outline:hover { border-color: var(--muted); color: var(--text); }
-
-  /* Section headers */
-  .section-label {
-    font-size: 11px; letter-spacing: 0.16em; color: var(--accent);
-    text-transform: uppercase; margin-bottom: 1rem;
-  }
-  h2 {
-    font-size: 1.6rem; font-weight: 400;
-    letter-spacing: -0.01em; margin-bottom: 1.5rem;
-    color: var(--text);
-  }
-  h3 {
-    font-size: 1.05rem; font-weight: 500;
-    margin-bottom: 0.5rem; color: var(--text);
-  }
-  p { color: var(--muted); margin-bottom: 1rem; }
-  p:last-child { margin-bottom: 0; }
-
-  /* Application cards — featured */
-  .app-grid {
-    display: grid; grid-template-columns: 1fr;
-    gap: 1.5rem; margin: 2rem 0;
-  }
-  .app-card {
-    background: var(--bg2);
-    border: 0.5px solid var(--border);
-    border-radius: 6px;
-    padding: 2rem;
-    transition: border-color 0.2s;
+  /* ── SHIFT GRID ── */
+  .shift-grid {
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 1.5rem;
+    grid-template-columns: 1fr 60px 1fr;
+    margin-top: 4rem;
     align-items: start;
   }
-  .app-card:hover { border-color: var(--border2); }
-  .app-card .card-label {
-    font-size: 11px; letter-spacing: 0.12em; color: var(--accent);
-    text-transform: uppercase; margin-bottom: 0.5rem;
-  }
-  .app-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
-  .app-card p { font-size: 14px; line-height: 1.7; }
-  .app-card .card-meta {
-    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem;
-  }
-  .app-card a.card-link {
-    font-size: 12px; color: var(--accent2);
-    text-decoration: none; letter-spacing: 0.04em;
-    margin-top: 0.75rem; display: inline-block;
-  }
-  .app-card a.card-link:hover { text-decoration: underline; }
-  .app-badge {
-    display: inline-block;
-    border-radius: 3px; padding: 2px 8px;
-    font-size: 11px; font-family: var(--mono);
-    letter-spacing: 0.02em; white-space: nowrap;
-  }
-  .badge-market {
-    background: rgba(122,158,201,0.12); color: var(--accent2);
-    border: 0.5px solid rgba(122,158,201,0.25);
-  }
-  .badge-status {
-    background: rgba(122,201,138,0.1); color: var(--green);
-    border: 0.5px solid rgba(122,201,138,0.25);
-  }
-  .badge-lead {
-    background: rgba(201,185,122,0.1); color: var(--accent);
-    border: 0.5px solid rgba(201,185,122,0.25);
-  }
-  .badge-new {
-    background: rgba(201,122,122,0.12); color: #c9907a;
-    border: 0.5px solid rgba(201,122,122,0.25);
-  }
-  .app-card-side {
-    display: flex; flex-direction: column; gap: 0.5rem;
-    align-items: flex-end; min-width: 120px;
+
+  .shift-col {
+    padding: 2.5rem;
+    background: var(--surface2);
+    border: 1px solid var(--rule);
   }
 
-  /* Framework block */
-  .kernel-block {
-    background: var(--bg2);
-    border: 0.5px solid var(--border);
-    border-radius: 6px;
-    padding: 2rem;
-    margin: 2rem 0;
-  }
-  .kernel-eq {
+  .shift-col-label {
     font-family: var(--mono);
-    font-size: 1rem;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.04em;
-  }
-  .operator-chain {
-    display: flex; align-items: center; gap: 0.5rem;
-    flex-wrap: wrap; margin-bottom: 1.5rem;
-  }
-  .op {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 36px; height: 36px;
-    background: var(--bg3); border: 0.5px solid var(--border2);
-    border-radius: 4px;
-    font-family: var(--mono); font-size: 14px; font-weight: 500;
-    color: var(--accent2);
-  }
-  .op-arrow { color: var(--muted); font-size: 12px; }
-  .domain-block {
-    font-family: var(--mono); font-size: 13px;
-    color: var(--muted); line-height: 1.9;
-    border-left: 2px solid var(--border2); padding-left: 1rem;
-    margin-top: 1.5rem;
+    font-size: 0.67rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
   }
 
-  /* Revenue cards */
-  .revenue-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1rem; margin: 2rem 0;
-  }
-  .revenue-card {
-    background: var(--bg2); border: 0.5px solid var(--border);
-    border-radius: 6px; padding: 1.5rem;
-    transition: border-color 0.2s;
-  }
-  .revenue-card:hover { border-color: var(--border2); }
-  .revenue-card .card-label {
-    font-size: 11px; letter-spacing: 0.12em; color: var(--accent);
-    text-transform: uppercase; margin-bottom: 0.75rem;
-  }
-  .revenue-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-  .revenue-card p { font-size: 14px; line-height: 1.65; }
-  .revenue-card .card-detail {
-    font-size: 12px; color: var(--accent2); margin-top: 0.75rem;
-    font-family: var(--mono); letter-spacing: 0.02em;
+  .shift-col-label.legacy { color: var(--muted); }
+  .shift-col-label.abr { color: var(--gold); }
+
+  .shift-col h3 {
+    font-family: var(--sans);
+    font-size: 1.12rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.3;
   }
 
-  /* SAFE block */
-  .safe-block {
-    background: var(--bg2);
-    border: 0.5px solid rgba(201,185,122,0.25);
-    border-radius: 6px;
-    padding: 2rem;
-    margin: 2rem 0;
-  }
-  .safe-block h3 {
-    color: var(--accent); margin-bottom: 1rem; font-size: 1.1rem;
-  }
-  .safe-row {
-    display: flex; gap: 3rem; flex-wrap: wrap; margin-top: 1rem;
-  }
-  .safe-item .val {
-    font-family: var(--mono); font-size: 1.3rem; color: var(--text);
-    line-height: 1.2;
-  }
-  .safe-item .desc {
-    font-size: 12px; color: var(--muted); letter-spacing: 0.04em;
-    text-transform: uppercase; margin-top: 0.25rem;
+  .shift-col p {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.8;
   }
 
-  /* Documents */
-  .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-  .doc-card {
-    background: var(--bg2); border: 0.5px solid var(--border);
-    border-radius: 6px; padding: 1.5rem;
-    transition: border-color 0.2s;
-  }
-  .doc-card:hover { border-color: var(--border2); }
-  .doc-type {
-    font-size: 11px; letter-spacing: 0.12em; color: var(--accent);
-    text-transform: uppercase; margin-bottom: 0.75rem;
-  }
-  .doc-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-  .doc-card p { font-size: 14px; line-height: 1.65; margin-bottom: 1rem; }
-  .doc-card a {
-    font-size: 12px; color: var(--accent2);
-    text-decoration: none; letter-spacing: 0.04em;
-  }
-  .doc-card a:hover { text-decoration: underline; }
+  .shift-col p + p { margin-top: 1rem; }
 
-  /* Demos table */
-  .demo-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
-  .demo-table th {
-    font-size: 11px; letter-spacing: 0.1em; color: var(--muted);
-    text-transform: uppercase; text-align: left;
-    padding: 0.5rem 1rem; border-bottom: 0.5px solid var(--border);
-    font-weight: 400;
+  .shift-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 1.4rem;
+    color: var(--gold-dim);
+    padding-top: 4rem;
   }
-  .demo-table td {
-    padding: 1rem; font-size: 14px;
-    border-bottom: 0.5px solid var(--border);
+
+  /* ── OPERATORS ── */
+  .operator-sequence {
+    display: flex;
+    gap: 2px;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+  }
+
+  .op-block {
+    background: var(--surface2);
+    border: 1px solid var(--rule);
+    padding: 1.4rem 1.6rem;
+    text-align: center;
+    flex: 1;
+    min-width: 90px;
+  }
+
+  .op-letter {
+    font-family: var(--mono);
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+
+  .op-name {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  .op-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.6rem;
+    line-height: 1.5;
+  }
+
+  .formula-block {
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    color: var(--muted);
+    border-left: 2px solid var(--gold);
+    padding: 1.1rem 1.6rem;
+    margin: 2.5rem 0;
+    background: var(--surface2);
+    line-height: 1.8;
+  }
+
+  .formula-block span { color: var(--gold); }
+
+  /* ── DOMAINS ── */
+  .domain-intro {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 680px;
+    line-height: 1.85;
+    margin-bottom: 3.5rem;
+  }
+
+  .domain-intro strong { color: var(--text); font-weight: 500; }
+  .domain-intro p + p { margin-top: 1.3rem; }
+
+  .domain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 1.5px;
+    background: var(--rule);
+  }
+
+  .domain-card {
+    background: var(--surface);
+    padding: 2.4rem;
+    text-decoration: none;
+    display: block;
+    transition: background 0.2s;
+  }
+
+  .domain-card:hover { background: var(--surface2); }
+
+  .domain-tag {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .domain-name {
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .domain-what-becomes-visible {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    margin-top: 0.8rem;
+  }
+
+  .domain-finding {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 1.4rem;
+  }
+
+  .domain-stat {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── PROOF TABLE ── */
+  .proof-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+  }
+
+  .proof-table th {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .proof-table td {
+    padding: 1.1rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    color: var(--muted);
     vertical-align: top;
-  }
-  .demo-table tr:last-child td { border-bottom: none; }
-  .demo-table td:first-child a {
-    color: var(--accent2); text-decoration: none; font-family: var(--mono); font-size: 13px;
-  }
-  .demo-table td:first-child a:hover { text-decoration: underline; }
-  .demo-table td:nth-child(2) { color: var(--muted); }
-  .lead-badge {
-    display: inline-block;
-    background: rgba(201,185,122,0.1); color: var(--accent);
-    border: 0.5px solid rgba(201,185,122,0.25);
-    border-radius: 3px; padding: 2px 8px;
-    font-size: 12px; font-family: var(--mono); white-space: nowrap;
+    line-height: 1.5;
   }
 
-  /* Contact */
-  #contact { text-align: center; }
-  #contact p { max-width: 520px; margin-left: auto; margin-right: auto; }
-  .contact-links {
-    display: flex; gap: 1rem; justify-content: center;
-    flex-wrap: wrap; margin-top: 1.5rem;
+  .proof-table td:first-child {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--text);
   }
 
-  /* Footer */
+  .proof-table a {
+    color: var(--gold);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+  }
+
+  .proof-table a:hover { text-decoration: underline; }
+  .proof-table tr:hover td { background: var(--surface2); }
+
+  /* ── INVESTMENT ── */
+  .safe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--rule);
+    margin-top: 3rem;
+  }
+
+  .safe-cell {
+    background: var(--surface);
+    padding: 2.2rem;
+    text-align: center;
+  }
+
+  .safe-value {
+    font-family: var(--mono);
+    font-size: 1.6rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .safe-label {
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .docs-list { margin-top: 2.5rem; }
+
+  .doc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--rule);
+    gap: 2rem;
+  }
+
+  .doc-item:last-child { border-bottom: 1px solid var(--rule); }
+
+  .doc-title {
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+
+  .doc-desc { font-size: 0.86rem; color: var(--muted); }
+
+  .doc-link {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--gold);
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+  }
+
+  .doc-link:hover { text-decoration: underline; }
+
+  /* ── CONTACT ── */
+  #contact {
+    text-align: center;
+    padding: 8rem 4vw;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  #contact .section-label { text-align: center; }
+  #contact .section-heading { margin: 0 auto 1.5rem; text-align: center; }
+  #contact .section-body { margin: 0 auto 3rem; text-align: center; max-width: 100%; }
+
+  .contact-email {
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-email:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
   footer {
-    border-top: 0.5px solid var(--border);
-    padding: 2rem; text-align: center;
-    font-size: 13px; color: var(--muted);
+    border-top: 1px solid var(--rule);
+    padding: 2rem 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
-  footer a { color: var(--muted); }
 
-  @media (max-width: 600px) {
-    nav { padding: 0 1rem; }
-    .nav-links { gap: 1rem; }
-    .nav-links a { font-size: 12px; }
-    section { padding: 4rem 1.25rem; }
-    #hero { padding-left: 1.25rem; padding-right: 1.25rem; }
-    .hero-logo { width: 200px; }
-    .doc-grid { grid-template-columns: 1fr; }
-    .revenue-grid { grid-template-columns: 1fr; }
-    .demo-table { font-size: 13px; }
-    .demo-table td { padding: 0.75rem 0.5rem; }
-    .hero-stat-row { gap: 1.5rem; }
-    .safe-row { gap: 1.5rem; }
-    .app-card { grid-template-columns: 1fr; }
-    .app-card-side { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+  .footer-left {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .footer-right { display: flex; gap: 2rem; }
+
+  .footer-right a {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .footer-right a:hover { color: var(--text); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+    .shift-grid { grid-template-columns: 1fr; }
+    .shift-arrow { display: none; }
+    .arc-step { grid-template-columns: 1fr; gap: 0.8rem; }
+    .safe-grid { grid-template-columns: 1fr; }
+    .domain-grid { grid-template-columns: 1fr; }
+    .doc-item { flex-direction: column; gap: 0.8rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
   }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a class="nav-brand" href="#hero">
-    <img src="images/Metatron_Dynamics_logo.png" alt="Metatron Dynamics">
+  <a class="nav-logo" href="#hero">
+    <img src="https://relationalrelativity.dev/images/Metatron_Dynamics_logo.png"
+         alt="Metatron Dynamics"
+         style="height: 32px; width: 32px; object-fit: cover; border-radius: 4px; margin-right: 0.5rem; vertical-align: middle;">
     Metatron Dynamics
   </a>
   <ul class="nav-links">
-    <li><a href="#applications">Applications</a></li>
-    <li><a href="#market">Market</a></li>
-    <li><a href="#solution">How It Works</a></li>
-    <li><a href="#proof">Proof</a></li>
+    <li><a href="#demonstration">The Demonstration</a></li>
+    <li><a href="#repositories">Repositories</a></li>
+    <li><a href="#economy">An Invitation</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- ═══════════════════════════════════════════
-     HERO
-     ═══════════════════════════════════════════ -->
+<!-- HERO -->
 <section id="hero">
-  <img class="hero-logo" src="images/Metatron_Dynamics_logo.png" alt="Metatron Dynamics">
-  <div class="hero-label">Deep-Tech &middot; Information Systems &middot; Delaware C-Corp</div>
-  <h1>We detect system failures<br>before they cascade.</h1>
-  <p class="hero-sub">
-    Metatron Dynamics builds domain-declaration and relational-field analysis systems
-    that identify structural instability before conventional monitoring detects visible failure.
-  </p>
-  <p class="hero-sub" style="font-size: 0.95rem;">
-    Metatron Dynamics makes it possible for a single human being to analyze, manage,
-    and produce complex systems at scale under acceleration. This process constitutes
-    a discipline&mdash;because without it, the complexity that makes these systems
-    valuable is the same complexity that makes them fail.
-  </p>
-  <p class="hero-sub" style="font-size: 0.95rem;">
-    One mathematical framework. Applied to life insurance, medical imaging,
-    atmospheric monitoring, robotics fleet operations, GPU compute infrastructure, and financial systemic risk.
-  </p>
-
-  <div class="hero-stat-row">
-    <div class="hero-stat">
-      <div class="num">31.6&times;</div>
-      <div class="label">Relational spread &middot; insurance</div>
-    </div>
-    <div class="hero-stat">
-      <div class="num">4.9 hr</div>
-      <div class="label">Lead time &middot; weather</div>
-    </div>
-    <div class="hero-stat">
-      <div class="num">82</div>
-      <div class="label">Step lead time &middot; robotics</div>
-    </div>
-  </div>
-
-  <div class="hero-cta">
-    <a class="btn btn-primary" href="#market">Investment Terms</a>
-    <a class="btn btn-outline" href="#applications">See Applications</a>
-    <a class="btn btn-outline" href="https://github.com/Relational-Relativity-Corporation" target="_blank" rel="noopener">GitHub &rarr;</a>
+  <img src="https://relationalrelativity.dev/images/Metatron_Dynamics_logo.png"
+       alt="Metatron Dynamics"
+       style="width: 140px; height: 140px; object-fit: cover; border-radius: 8px; margin-bottom: 2rem;">
+  <p class="hero-eyebrow">Metatron Dynamics · Deep-Tech · Delaware C-Corp</p>
+  <h1 class="hero-thesis">
+    The work described on this site<br>
+    would not exist without large language models.<br>
+    <strong>And large language models would not exist<br>without the architects of the transformer.</strong>
+  </h1>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#demonstration">See the arithmetic</a>
+    <a class="btn-secondary" href="https://github.com/Relational-Relativity-Corporation" target="_blank">GitHub →</a>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     APPLICATIONS — LEAD WITH DEPLOYABLE SYSTEMS
-     ═══════════════════════════════════════════ -->
-<section id="applications">
-  <div class="section-label">Applied Systems</div>
-  <h2>Six independent domains. Six verified results. One underlying capability.</h2>
-  <p>
-    Insurance, medical imaging, meteorology, robotics, GPU compute infrastructure, and financial
-    systemic risk share no domain knowledge&mdash;yet all five currently discard relational coupling structure
-    before computing. The same invariant operator sequence is applied without domain-specific
-    modification across all five; only the declared observables and relations change.
-  </p>
+<hr class="section-rule">
 
-  <div class="app-grid">
+<!-- THE DEMONSTRATION -->
+<div id="demonstration">
+<div class="section">
+  <p class="section-label">The Demonstration</p>
+  <h2 class="section-heading">
+    The arithmetic of undeclared relevance.
+  </h2>
+  <div class="section-body" style="max-width: 780px;">
+    <p>Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser, and Polosukhin —
+    the architects of the transformer — are the giants upon whose shoulders this work stands.
+    They built the most sophisticated artifact ever constructed on an architecture that
+    computes relevance between elements rather than beginning from a declared relational
+    graph. Attention at scale is what that architecture looks like when you engineer it
+    to its limit. It is extraordinary work.</p>
 
-    <!-- GPU Compute — AMD -->
-    <div class="app-card">
-      <div>
-        <div class="card-label">GPU Compute Infrastructure &middot; AMD</div>
-        <h3>Relational Field Analysis for GPU Compute Graphs</h3>
-        <p>
-          rocprof and Omniperf measure what the GPU did. They do not characterize
-          which dependency edges are structurally critical, how much total relational
-          load flows through the compute graph, or whether the workload is approaching
-          a condition where any kernel change cascades unpredictably. ABR operators
-          applied directly to the declared HIP dependency structure produce that
-          class of information. Six invariants separated four workload classes from
-          relational structure alone&mdash;without access to semantic labels or
-          profiler timing. Phase 0 complete. No GPU required to run.
-        </p>
-        <div class="card-meta">
-          <span class="app-badge badge-market">GPU Infrastructure</span>
-          <span class="app-badge badge-market">AMD ROCm</span>
-          <span class="app-badge badge-status">Phase 0 Complete</span>
-          <span class="app-badge badge-new">AMD Advancing AI 2026</span>
-        </div>
-        <a class="card-link" href="https://github.com/Relational-Relativity-Corporation/abr-gpu-workload-field" target="_blank" rel="noopener">View Repository &rarr;</a>
+    <p>It is also, precisely because it is so complete, the clearest possible demonstration
+    of the computational consequence of that architecture at scale.</p>
+
+    <p>The framework Metatron Dynamics has developed is a mathematical formalization of how
+    a bounded observer — any person, in any domain — experiences information: as relationships
+    among observable quantities, evolving within a declared boundary. The framework is
+    constructed to be scale and domain invariant. The repositories linked on this site test
+    that proposition across domains including GPU workload architecture, biological binding,
+    power grid coordination, materials recovery, and financial exposure — each governed by
+    the same operator sequence.</p>
+
+    <p class="section-label" style="margin-bottom: 1.2rem; margin-top: 2.5rem;">The arithmetic</p>
+
+    <p>A standard dense self-attention layer processing a sequence of <strong><em>n</em></strong>
+    tokens computes relevance across all <strong><em>n</em> × <em>n</em></strong> token pairs,
+    producing an n × n attention-score matrix. For 100,000 tokens — a modest enterprise
+    document — that matrix contains <strong>10 billion pairwise attention-score
+    computations.</strong></p>
+
+    <p>The relational structure of that same passage, declared directly from its observable
+    content, is sparse. A pronoun relates to its antecedent. A verb relates to its subject
+    and object. A clause relates to its connective. If the average token has
+    <strong><em>k</em></strong> genuine relational partners, the operation count becomes
+    <strong><em>n</em> × <em>k</em></strong> — linear in <em>n</em>, not quadratic.</p>
+
+    <div style="margin: 2.5rem 0; font-family: var(--mono); font-size: 0.88rem; color: var(--muted); border-left: 2px solid var(--gold-dim); padding-left: 1.5rem; line-height: 2.2;">
+      <div style="margin-bottom: 0.8rem;">
+        <span style="color: var(--text);">Undeclared relevance:</span>&nbsp;&nbsp;
+        <em>n</em> × <em>n</em> comparisons
       </div>
-      <div class="app-card-side">
-        <span class="app-badge badge-lead">6 invariants</span>
-        <span class="app-badge badge-lead">4 workload classes</span>
-        <span class="app-badge badge-lead">50 tests pass</span>
+      <div style="margin-bottom: 0.8rem;">
+        <span style="color: var(--text);">Declared relevance:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <em>n</em> × <em>k</em> comparisons
       </div>
-    </div>
-
-
-    <!-- Financial Exposure — AMD Alveo -->
-    <div class="app-card">
-      <div>
-        <div class="card-label">Financial Infrastructure &middot; AMD Alveo</div>
-        <h3>Directed Counterparty Exposure Network Analysis</h3>
-        <p>
-          Correlation matrices and VaR models measure aggregate risk. They do not
-          characterize which obligation chains are structurally critical, how much
-          total relational load flows through the exposure network, or whether the
-          network is approaching a condition where any counterparty failure cascades
-          unpredictably. ABR operators applied directly to declared bilateral
-          obligation records produce that class of information. Six invariants
-          separated four counterparty network classes from relational structure
-          alone. AMD Alveo cards already deployed in trading infrastructure make
-          this a natural FPGA-native extension &mdash; deterministic latency per
-          market step, producing genuinely new risk information with latency the
-          GPU cannot guarantee.
-        </p>
-        <div class="card-meta">
-          <span class="app-badge badge-market">Financial Infrastructure</span>
-          <span class="app-badge badge-market">Systemic Risk</span>
-          <span class="app-badge badge-status">Phase 0 Complete</span>
-          <span class="app-badge badge-new">AMD Alveo Native</span>
-        </div>
-        <a class="card-link" href="https://github.com/Relational-Relativity-Corporation/abr-financial-exposure" target="_blank" rel="noopener">View Repository &rarr;</a>
-      </div>
-      <div class="app-card-side">
-        <span class="app-badge badge-lead">6 invariants</span>
-        <span class="app-badge badge-lead">51 tests pass</span>
-        <span class="app-badge badge-lead">pre-crisis signal</span>
+      <div style="border-top: 1px solid var(--rule); padding-top: 0.8rem; color: var(--gold);">
+        Reduction ratio: <em>n</em> / <em>k</em> &nbsp;—&nbsp; set by the structure of the domain, not by approximation.
       </div>
     </div>
 
-    <!-- Life Insurance -->
-    <div class="app-card">
-      <div>
-        <div class="card-label">Life Insurance &middot; Actuarial Risk</div>
-        <h3>Shock Lapse Detection</h3>
-        <p>
-          Standard actuarial models respond after aggregate rates move. The structural
-          fracturing across policy cells&mdash;the precursor&mdash;is invisible to
-          cell-local methods. ABRCE operators detect relational spread elevation
-          before rates shift. Every assumption declared. Every exclusion documented.
-          Regulator-presentable.
-        </p>
-        <div class="card-meta">
-          <span class="app-badge badge-market">Life Insurance</span>
-          <span class="app-badge badge-market">Actuarial Risk</span>
-          <span class="app-badge badge-status">Verified</span>
-        </div>
-      </div>
-      <div class="app-card-side">
-        <span class="app-badge badge-lead">31.6&times; spread</span>
-        <span class="app-badge badge-lead">SOA data</span>
-      </div>
-    </div>
+    <p>This is not an approximation of the standard result. It is a different mathematical
+    starting point — one in which relevance is a <strong>declared observable</strong> rather
+    than a quantity computed across all possible pairs.</p>
 
-    <!-- Medical Instrumentation -->
-    <div class="app-card">
-      <div>
-        <div class="card-label">Medical Instrumentation &middot; Emergency Care</div>
-        <h3>Bedside NMR Sensor</h3>
-        <p>
-          Epidural hematoma and perfusion failure are time-critical. Conventional MRI
-          cannot be deployed bedside in an ER. A segmented receiver array operating at
-          low field strength detects tissue boundaries from water content contrast alone&mdash;no
-          Fourier transform, no averaging&mdash;producing an ER-deployable imaging instrument.
-        </p>
-        <div class="card-meta">
-          <span class="app-badge badge-market">Medical Instrumentation</span>
-          <span class="app-badge badge-market">Emergency Care</span>
-          <span class="app-badge badge-status">Verified</span>
-        </div>
-      </div>
-      <div class="app-card-side">
-        <span class="app-badge badge-lead">14.97&times; boundary</span>
-        <span class="app-badge badge-lead">SNR &gt;129K</span>
-      </div>
-    </div>
+    <p style="margin-top: 1.5rem;">A portion of the computational demand driving the current
+    data center buildout is the cost of computing relationships that a declared relational
+    system would not need to infer.</p>
 
-    <!-- Weather -->
-    <div class="app-card">
-      <div>
-        <div class="card-label">Predictive Infrastructure &middot; Weather</div>
-        <h3>ABR Weather Monitor</h3>
-        <p>
-          Numerical forecasting collapses atmospheric coupling into scalar fields before
-          the model runs. The relational organization of the station network&mdash;the
-          earliest signal&mdash;is discarded first. Raw NOAA station data processed
-          directly across a proximity network. No gridded fields. No model analysis.
-          No parameters tuned to the result.
-        </p>
-        <div class="card-meta">
-          <span class="app-badge badge-market">Weather &amp; Aviation</span>
-          <span class="app-badge badge-market">Agriculture</span>
-          <span class="app-badge badge-market">Insurance</span>
-          <span class="app-badge badge-status">Verified</span>
-        </div>
-        <a class="card-link" href="https://github.com/Relational-Relativity-Corporation/abr-weather-monitor" target="_blank" rel="noopener">View Repository &rarr;</a>
-      </div>
-      <div class="app-card-side">
-        <span class="app-badge badge-lead">4.9 hr lead</span>
-        <span class="app-badge badge-lead">42/42 positive</span>
-      </div>
-    </div>
-
-    <!-- Robotics -->
-    <div class="app-card">
-      <div>
-        <div class="card-label">Robotics &middot; Fleet Operations</div>
-        <h3>Fleet Instability Detection</h3>
-        <p>
-          Scalar monitoring of individual actuator performance misses the coupling
-          degradation across the fleet that precedes failure. By the time a single
-          unit triggers an alert, the cascade is already in motion. Relational
-          coupling structure monitored continuously across all fleet members produces
-          structural warning well before any individual unit reaches failure threshold.
-        </p>
-        <div class="card-meta">
-          <span class="app-badge badge-market">Robotics</span>
-          <span class="app-badge badge-market">Fleet Operations</span>
-          <span class="app-badge badge-status">Verified</span>
-        </div>
-      </div>
-      <div class="app-card-side">
-        <span class="app-badge badge-lead">82 steps</span>
-        <span class="app-badge badge-lead">6-robot fleet</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     MARKET & REVENUE
-     ═══════════════════════════════════════════ -->
-<section id="market">
-  <div class="section-label">Market &amp; Revenue</div>
-  <h2>The addressable market is not a single vertical</h2>
-  <p>
-    It is every industry where coupled system behavior is currently monitored using
-    scalar projections&mdash;which is nearly every domain of commercial consequence.
-    The competitive moat is comprehension: operational understanding of the mathematics,
-    not access to the code, which is open-source.
-  </p>
-
-  <div class="revenue-grid">
-    <div class="revenue-card">
-      <div class="card-label">Life Insurance &middot; Actuarial Risk</div>
-      <h3>Shock Lapse Early Warning</h3>
-      <p>
-        Structural fracturing across policy cells detected before aggregate rates move.
-        Every assumption declared. Every exclusion documented. Regulator-presentable.
-      </p>
-      <div class="card-detail">31.6&times; relational spread at duration 10 &middot; SOA data</div>
-    </div>
-
-    <div class="revenue-card">
-      <div class="card-label">Medical Instrumentation &middot; Emergency Care</div>
-      <h3>Bedside NMR Imaging</h3>
-      <p>
-        ER-deployable tissue boundary detection at low field strength. No Fourier
-        transform. No averaging. Water content contrast alone.
-      </p>
-      <div class="card-detail">14.97&times; boundary ratio &middot; SNR &gt;129,000 per step</div>
-    </div>
-
-    <div class="revenue-card">
-      <div class="card-label">Predictive Infrastructure &middot; Weather</div>
-      <h3>Relational Atmospheric Detection</h3>
-      <p>
-        Raw NOAA station data processed directly across a proximity network before
-        scalar collapse. No gridded fields. No model analysis. No free parameters.
-      </p>
-      <div class="card-detail">4.9 hr mean lead time &middot; 42 of 42 comparisons positive</div>
-    </div>
-
-    <div class="revenue-card">
-      <div class="card-label">Robotics &middot; Fleet Operations</div>
-      <h3>Fleet Instability Detection</h3>
-      <p>
-        Relational coupling structure monitored continuously across all fleet members.
-        Structural warning well before any individual unit reaches failure threshold.
-      </p>
-      <div class="card-detail">82-step lead time &middot; 6-robot task-queue fleet</div>
-    </div>
-
-    <div class="revenue-card">
-      <div class="card-label">GPU Compute Infrastructure &middot; AMD</div>
-      <h3>GPU Workload Relational Analysis</h3>
-      <p>
-        ABR operators applied to declared HIP compute graph. Six invariants discriminate
-        workload classes from relational structure alone. FPGA pipeline characterizes
-        graph while GPU executes. No GPU required for Phase 0.
-      </p>
-      <div class="card-detail">6 discriminating invariants &middot; 50 Verifier tests &middot; Phase 0 PASS</div>
-    </div>
-  </div>
-
-  <!-- SAFE Terms -->
-  <div class="safe-block">
-    <h3>Investment Terms &mdash; SAFE (Simple Agreement for Future Equity)</h3>
-    <p style="color: var(--muted); font-size: 14px; margin-bottom: 1rem;">
-      Metatron Dynamics, Inc. is raising under a standard SAFE instrument.
-      All terms follow Y Combinator standard SAFE conventions.
+    <p style="margin-top: 2.5rem; font-size: 1.08rem; color: var(--gold); font-weight: 600;">
+      Metatron Dynamics has discovered a method by which a single person can analyze,
+      manage, and produce complex systems at scale, in a mathematically rigorous fashion.
+      What that makes possible is not yet fully known — but it is exemplified by the
+      repositories linked on this site.
     </p>
-    <div class="safe-row">
-      <div class="safe-item">
-        <div class="val">$50K&ndash;$100K</div>
-        <div class="desc">Raise target</div>
-      </div>
-      <div class="safe-item">
-        <div class="val">$1M</div>
-        <div class="desc">Post-money valuation cap</div>
-      </div>
-      <div class="safe-item">
-        <div class="val">Delaware C-Corp</div>
-        <div class="desc">Entity structure</div>
-      </div>
+
+    <p style="margin-top: 1.5rem;">Metatron Dynamics exists to bring this perspective
+    to as many human beings as possible — in order to increase the economic value
+    of every individual in our population.</p>
+
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--rule); max-width: 780px;">
+      <p class="section-label" style="margin-bottom: 1.2rem;">What the framework requires</p>
+
+      <p>The founding axiom of the framework is falsifiable: the only mathematical primitive
+      is observable difference, relative to a declared boundary. Not things —
+      <strong>observable differences</strong>, relative to a declared boundary. Time is not
+      required to define this. Temporal change is a downstream construct. The falsification
+      test is simple: produce one empirical datum whose informational content requires no
+      difference, distinction, or relation to a reference. We have not identified such a datum.</p>
+
+      <p>Agency cannot be outsourced to an algorithm. Within this framework, producing a
+      declaration is not the same as being the origin of one. An algorithm can output text
+      specifying a domain. It cannot be the provenance of that declaration without making
+      the origin circular. The Origin must be external to the transformation being evaluated.
+      Without a valid Origin there is nothing to declare. Without a declaration the operators
+      have nothing admissible to run on.</p>
+
+      <p>This can be tested directly. You can prompt a language model to simulate a
+      declaration. Under this framework, the simulation has no mathematical standing —
+      not because of anything about the nature of algorithms, but because provenance
+      cannot be self-generated within the system being evaluated. The output may resemble
+      a relational analysis. The admissibility requirement cannot be satisfied from inside
+      the computation.</p>
+
+      <p style="margin-top: 2rem; color: var(--gold); font-weight: 600;">
+        The Origin is not a convenience. It is a required primitive.
+      </p>
     </div>
   </div>
-</section>
+</div>
+</div>
 
-<!-- ═══════════════════════════════════════════
-     PROBLEM
-     ═══════════════════════════════════════════ -->
-<section id="problem">
-  <div class="section-label">The admissibility gap</div>
-  <h2>Instability begins before failure is visible</h2>
-  <p>
-    When a life insurer prices shock lapse risk, they see aggregate rates&mdash;not the
-    structural fracturing across policy cells that precedes them. When an ER physician
-    needs to image a trauma patient, the equipment cannot come to the patient. When a
-    weather-dependent business needs to act, the forecast has already collapsed the
-    atmospheric coupling that carried the earliest signal.
-  </p>
-  <p>
-    These are not technology failures. They are <em>information failures</em>&mdash;the
-    result of methods that project coupled system behavior into scalar quantities,
-    discarding relational structure before subsequent computation. We call this the
-    <em>admissibility gap</em>. Closing it produces measurable early warning across
-    every domain we have tested.
-  </p>
-</section>
+<hr class="section-rule">
 
-<!-- ═══════════════════════════════════════════
-     SOLUTION / FRAMEWORK
-     ═══════════════════════════════════════════ -->
-<section id="solution">
-  <div class="section-label">ABRCE Framework</div>
-  <h2>How it works</h2>
-  <p>
-    The ABRCE operator framework defines information processing as a composition of
-    five operators applied in strict canonical sequence. Every claim is bounded over the
-    declared domain D. No output extends beyond it.
-  </p>
+<!-- REPOSITORIES -->
+<div id="repositories">
+<div class="section">
+  <p class="section-label">Repositories</p>
+  <h2 class="section-heading">The method, running.</h2>
+  <div class="section-body" style="max-width: 780px;">
+    <p>Each repository below was built under the Repository Protocol: domain declared
+    through M, all functional code in Rust, independent Verifier pass before publication,
+    Origin execution confirmed on local hardware. The operator sequence is the same
+    across every domain.</p>
 
-  <div class="kernel-block">
-    <div class="kernel-eq">E(x, &rho;) = C(R(B(A(x)), &rho;))</div>
-    <div class="operator-chain">
-      <div class="op">A</div>
-      <div class="op-arrow">&rarr;</div>
-      <div class="op">B</div>
-      <div class="op-arrow">&rarr;</div>
-      <div class="op">R</div>
-      <div class="op-arrow">&rarr;</div>
-      <div class="op">C</div>
-      <div class="op-arrow">&rarr;</div>
-      <div class="op">E</div>
+    <div style="margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem;">
+
+      <div style="border-left: 2px solid var(--gold-dim); padding-left: 1.5rem;">
+        <a href="https://github.com/Relational-Relativity-Corporation/abr-biological-binding"
+           target="_blank"
+           style="font-family: var(--mono); font-size: 0.9rem; color: var(--gold); text-decoration: none;">
+          abr-biological-binding →
+        </a>
+        <p style="margin: 0.4rem 0 0; color: var(--muted); font-size: 0.9rem;">
+          Relational operator analysis of hydrogen bond and water-bridge geometry in
+          biological macromolecules. 16/16 MATCH, 13/13 water-bridge legs confirmed.
+        </p>
+      </div>
+
+      <div style="border-left: 2px solid var(--gold-dim); padding-left: 1.5rem;">
+        <a href="https://github.com/Relational-Relativity-Corporation/abr_sensorimotor_interface"
+           target="_blank"
+           style="font-family: var(--mono); font-size: 0.9rem; color: var(--gold); text-decoration: none;">
+          abr-sensorimotor-interface →
+        </a>
+        <p style="margin: 0.4rem 0 0; color: var(--muted); font-size: 0.9rem;">
+          Declared relational field applied to sensorimotor coordination — coupling
+          structure between perception and motor output, without aggregate loss.
+        </p>
+      </div>
+
+      <div style="border-left: 2px solid var(--gold-dim); padding-left: 1.5rem;">
+        <a href="https://github.com/Relational-Relativity-Corporation/abr-materials-recovery"
+           target="_blank"
+           style="font-family: var(--mono); font-size: 0.9rem; color: var(--gold); text-decoration: none;">
+          abr-materials-recovery →
+        </a>
+        <p style="margin: 0.4rem 0 0; color: var(--muted); font-size: 0.9rem;">
+          Community-scale materials recovery system modeled as a declared relational
+          graph. 20/20 tests, two Verifier passes, full provenance in GROUNDING.md.
+        </p>
+      </div>
+
+      <div style="border-left: 2px solid var(--gold-dim); padding-left: 1.5rem;">
+        <a href="https://github.com/Relational-Relativity-Corporation/abr-home-system-benchmark/tree/main/src"
+           target="_blank"
+           style="font-family: var(--mono); font-size: 0.9rem; color: var(--gold); text-decoration: none;">
+          abr-home-system-benchmark →
+        </a>
+        <p style="margin: 0.4rem 0 0; color: var(--muted); font-size: 0.9rem;">
+          Grounding measurement: ~3.4–3.8 ns/edge confirmed across two independent
+          runs on consumer hardware. 24/24 tests, V7-consistent operators.
+        </p>
+      </div>
+
     </div>
-    <div class="domain-block">
-      D := { x &isin; &#8477;<sup>n</sup> | n &lt; &infin; and |x[i]| &lt; &infin; &forall; i }<br>
-      All framework claims are bounded over D.
-    </div>
+
+    <p style="margin-top: 2.5rem; color: var(--muted); font-size: 0.88rem;">
+      Full organization:
+      <a href="https://github.com/Relational-Relativity-Corporation"
+         target="_blank" style="color: var(--gold);">
+        github.com/Relational-Relativity-Corporation →
+      </a>
+    </p>
   </div>
+</div>
+</div>
 
-  <p>
-    The declared domain is the operational primitive. When A is initialized
-    first&mdash;establishing the domain before any other operator acts&mdash;the system has
-    a structurally enforced floor. When B is initialized before A, the failure mode ABRCE
-    is designed to prevent is exactly what occurs. The framework enforces admissibility,
-    not correctness&mdash;ensuring the system can only operate within declared boundaries.
-  </p>
-  <p>
-    Mathematical foundations published on arXiv
-    (<a href="https://arxiv.org/abs/2601.22389" target="_blank" rel="noopener" style="color: var(--accent2);">arXiv:2601.22389</a>).
-  </p>
-</section>
+<hr class="section-rule">
 
-<!-- ═══════════════════════════════════════════
-     PROOF — VERIFICATION TABLE
-     ═══════════════════════════════════════════ -->
-<section id="proof">
-  <div class="section-label">Verification</div>
-  <h2>Reproducible demonstrations across independent domains</h2>
-  <p>
-    Each repository is an applied instance of the stability conditions derived in the
-    framework documentation. Simulation dynamics are built and verified independently
-    before ABRCE detection is layered on top. All results are publicly reproducible.
-  </p>
+<!-- EXPANDING ECONOMY -->
+<div id="economy">
+<div class="section">
+  <p class="section-label">An Invitation</p>
+  <h2 class="section-heading">An Invitation to an Expanding Economy</h2>
+  <div class="section-body" style="max-width: 780px;">
 
-  <table class="demo-table">
-    <thead>
-      <tr>
-        <th>Repository</th>
-        <th>Domain</th>
-        <th>Lead time</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a href="https://github.com/Relational-Relativity-Corporation/abr-gpu-workload-field" target="_blank" rel="noopener">abr-gpu-workload-field</a></td>
-        <td>ABR operator pipeline on AMD HIP compute graph &mdash; relational field analysis, workload class discrimination, load trajectory sweep</td>
-        <td><span class="lead-badge">Phase 0</span></td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/Relational-Relativity-Corporation/abr-financial-exposure" target="_blank" rel="noopener">abr-financial-exposure</a></td>
-        <td>ABR operator pipeline on directed counterparty exposure network &mdash; pre-crisis structural detection, obligation chain concentration, AMD Alveo FPGA target</td>
-        <td><span class="lead-badge">Phase 0</span></td>
-      </tr>
+    <p>Efficiency is often understood as requiring less.</p>
 
-      <tr>
-        <td><a href="https://github.com/Relational-Relativity-Corporation/abr-weather-monitor" target="_blank" rel="noopener">abr-weather-monitor</a></td>
-        <td>3-topology ABRCE on NOAA/ASOS/METAR raw observations &mdash; proximity, component, temporal</td>
-        <td><span class="lead-badge">Live</span></td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/Relational-Relativity-Corporation/abr-alignment-monitor" target="_blank" rel="noopener">abr-alignment-monitor</a></td>
-        <td>Structural divergence on transformer internals &mdash; EWS incompatibility demonstration</td>
-        <td><span class="lead-badge">88 steps</span></td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/Relational-Relativity-Corporation/supply-chain-early-warning-demo" target="_blank" rel="noopener">supply-chain-early-warning-demo</a></td>
-        <td>Multi-agent supply chain &mdash; ABRCE field detection on temporal difference field &delta;(t)</td>
-        <td><span class="lead-badge">88 steps</span></td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/Relational-Relativity-Corporation/robotics-instability-detection-relational" target="_blank" rel="noopener">robotics-instability-detection-relational</a></td>
-        <td>Multi-robot fleet task-queue simulation &mdash; early detection of load imbalance</td>
-        <td><span class="lead-badge">82 steps</span></td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/Relational-Relativity-Corporation/relational-weather-analysis" target="_blank" rel="noopener">relational-weather-analysis</a></td>
-        <td>Atmospheric structural detection &mdash; 9-station irregular graph, live METAR/buoy data</td>
-        <td><span class="lead-badge">Live</span></td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/Relational-Relativity-Corporation/relational-rate-limiter" target="_blank" rel="noopener">relational-rate-limiter</a></td>
-        <td>Production token bucket &mdash; 9 branches replaced by 5 bounded operator calls</td>
-        <td><span class="lead-badge">&mdash;</span></td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/Relational-Relativity-Corporation/bounded-update-controller" target="_blank" rel="noopener">bounded-update-controller</a></td>
-        <td>Multi-branch controller logic replaced by single bounded update operator</td>
-        <td><span class="lead-badge">&mdash;</span></td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/Relational-Relativity-Corporation/bounded-plasticity-simulation" target="_blank" rel="noopener">bounded-plasticity-simulation</a></td>
-        <td>Invariant relational magnitude constraints &mdash; provable stability regimes</td>
-        <td><span class="lead-badge">&mdash;</span></td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/Relational-Relativity-Corporation/structure-vs-control" target="_blank" rel="noopener">structure-vs-control</a></td>
-        <td>Minimal comparison: control-based branching vs. structure-based invariants</td>
-        <td><span class="lead-badge">Entry point</span></td>
-      </tr>
-    </tbody>
-  </table>
-</section>
+    <p>That is only half of what efficiency makes possible.</p>
 
-<!-- ═══════════════════════════════════════════
-     DOCUMENTS
-     ═══════════════════════════════════════════ -->
-<section id="documents">
-  <div class="section-label">Due Diligence</div>
-  <h2>Documentation</h2>
-  <p>
-    All documents are publicly available. Simulation results cited in the investor
-    document are independently verifiable in the repositories above.
-  </p>
+    <p>When the cost of doing something falls far enough, activities that were previously
+    impractical become ordinary. Computation has followed this pattern throughout its
+    history. Cheaper storage did not produce a world that stored less information. Cheaper
+    networking did not produce less communication. Greater computational efficiency expanded
+    what people could afford to attempt.</p>
 
-  <div class="doc-grid">
-    <div class="doc-card">
-      <div class="doc-type">Investor document</div>
-      <h3>The Clarity Dividend</h3>
-      <p>
-        The economic case for formal domain declaration. Documents 88-step and 82-step
-        lead times. Positions Metatron Dynamics within the lineage of Shannon, Turing,
-        and Wiener.
-      </p>
-      <a href="https://github.com/Relational-Relativity-Corporation/metatron-dynamics-framework/blob/main/The%20Clarity%20Dividend%20%E2%80%94%20Metatron%20Dynamics.pdf" target="_blank" rel="noopener">View PDF &rarr;</a>
+    <p>Relational computation presents the possibility of another expansion.</p>
+
+    <p>If the cost of analyzing a complex system falls substantially, the immediate result
+    is less computation required for a given analysis. But the larger consequence may be
+    that vastly more systems become practical to analyze, manage, and produce.</p>
+
+    <p>A community materials-recovery system illustrates the effect. Making such a system
+    observable may require continuous information from material flows, sensors, energy
+    systems, equipment, transportation, environmental conditions, storage, and downstream
+    uses. Each deployed system becomes a continuing source of observations and relationships
+    requiring computation.</p>
+
+    <p>The pattern is recursive:</p>
+
+    <div style="margin: 2rem 0; font-family: var(--mono); font-size: 0.85rem; color: var(--muted); border-left: 2px solid var(--gold-dim); padding-left: 1.5rem; line-height: 2.4;">
+      greater efficiency<br>
+      → greater access<br>
+      → more people able to work with complexity<br>
+      → more systems produced<br>
+      → more systems worth observing<br>
+      <span style="color: var(--gold);">→ greater demand for useful computation</span>
     </div>
-    <div class="doc-card">
-      <div class="doc-type">White paper</div>
-      <h3>Mathematics of Information System Stability</h3>
-      <p>
-        Derives stability conditions for bounded information processing systems
-        under acceleration. Formalizes the admissibility gap as the structural common
-        cause of cascade failures.
-      </p>
-      <a href="https://github.com/Relational-Relativity-Corporation/metatron-dynamics-framework/blob/main/Mathematics%20of%20Information%20System%20Stability%20%E2%80%94%20Metatron%20Dynamics.pdf" target="_blank" rel="noopener">View PDF &rarr;</a>
+
+    <p>The proposition is therefore not that efficient relational computation makes
+    today's computational infrastructure unnecessary.</p>
+
+    <p>The possibility is larger.</p>
+
+    <p>It may make that infrastructure useful to far more people.</p>
+
+    <p>A world in which individuals and communities can analyze and manage complex systems
+    is a world in which problems previously considered too expensive, too complicated, or
+    too specialized become addressable. Local energy systems can be understood at higher
+    resolution. Materials can be recovered rather than discarded. Manufacturing processes
+    can become accessible to smaller organizations. Environmental systems can be observed
+    continuously. Infrastructure can respond to what is actually happening rather than to
+    periodic approximations of it.</p>
+
+    <p>Some of that work may happen on personal machines. Some may require community-scale
+    compute. Some will require regional infrastructure, and some problems will continue to
+    justify hyperscale facilities.</p>
+
+    <p>The result is not necessarily a smaller computational economy. It may be a much
+    larger one:</p>
+
+    <div style="margin: 2rem 0; font-family: var(--mono); font-size: 0.85rem; color: var(--muted); border-left: 2px solid var(--gold-dim); padding-left: 1.5rem; line-height: 2.4;">
+      personal → community → regional → hyperscale
     </div>
-    <div class="doc-card">
-      <div class="doc-type">Published mathematics</div>
-      <h3>arXiv: 2601.22389</h3>
-      <p>
-        Formal mathematical publication establishing the relational operator
-        framework and its stability conditions. Academic verification backbone.
-      </p>
-      <a href="https://arxiv.org/abs/2601.22389" target="_blank" rel="noopener">View on arXiv &rarr;</a>
-    </div>
+
+    <p>Each layer expands what the layers around it can accomplish.</p>
+
+    <p>This is the economic possibility created by the relational efficiency proposition.
+    The value of reducing computation is not simply that we can spend less money
+    accomplishing what we already do. It is that the boundary of what is economically
+    possible moves outward.</p>
+
+    <p>There are billions of people who encounter complex systems every day: communities,
+    farms, factories, watersheds, businesses, schools, hospitals, power systems,
+    transportation networks, ecosystems, and problems that have never been computationally
+    tractable at their scale.</p>
+
+    <p>Giving more people the capacity to understand and work with those systems does not
+    imply a shrinking market. It implies an expanding field of human activity.</p>
+
+    <p>The measure that matters is therefore not how much computation we can eliminate.
+    It is how much <strong>useful human capability each unit of computation can
+    support</strong>.</p>
+
+    <p>If that ratio changes substantially, the opportunity is not merely to make
+    computation cheaper. It is to make more of the world workable.</p>
+
+    <p style="margin-top: 2.5rem; color: var(--gold); font-weight: 600;">
+      We invite hardware manufacturers, infrastructure builders, communities, researchers,
+      engineers, and investors to consider that possibility with us: an economy in which
+      computational efficiency expands participation rather than restricting it, and in
+      which greater access to complexity creates more systems worth building, more problems
+      worth solving, and more people capable of solving them.
+    </p>
+
   </div>
-</section>
+</div>
+</div>
 
-<!-- ═══════════════════════════════════════════
-     CONTACT
-     ═══════════════════════════════════════════ -->
+<hr class="section-rule">
+
+<!-- CONTACT -->
 <section id="contact">
-  <div class="section-label">Get in touch</div>
-  <h2>Inquiries &amp; investment conversations</h2>
-  <p>
-    We welcome inquiries from investors and potential consulting clients across
-    insurance, medical instrumentation, weather, robotics, GPU compute infrastructure, and financial systemic risk.
-  </p>
-  <div class="contact-links">
-    <a class="btn btn-primary" href="mailto:relationalrelativity@gmail.com">relationalrelativity@gmail.com</a>
-    <a class="btn btn-outline" href="https://github.com/Relational-Relativity-Corporation" target="_blank" rel="noopener">GitHub &rarr;</a>
+  <p class="section-label">Contact</p>
+  <h2 class="section-heading">An open invitation</h2>
+  <div class="section-body">
+    <p>We welcome anyone who recognizes what is being described here —
+    investors, researchers, engineers, domain practitioners, and anyone
+    working on problems where relational structure matters and existing computational
+    approaches leave important relationships implicit.</p>
+    <p>Every person who engages with this framework brings a perspective
+    that no one else can bring. That is not a courtesy.
+    It is precisely what the framework describes.</p>
+  </div>
+  <a class="contact-email" href="mailto:relationalrelativity@gmail.com">relationalrelativity@gmail.com</a>
+  <div class="hero-actions" style="justify-content: center;">
+    <a class="btn-primary" href="mailto:relationalrelativity@gmail.com">Start a conversation</a>
+    <a class="btn-secondary" href="https://github.com/Relational-Relativity-Corporation" target="_blank">GitHub →</a>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <p>&copy; 2026 Metatron Dynamics, Inc. &nbsp;&middot;&nbsp; <a href="https://github.com/Relational-Relativity-Corporation" target="_blank" rel="noopener">GitHub</a> &nbsp;&middot;&nbsp; Delaware C-Corp &middot; File No. 10551645</p>
+  <div class="footer-left">
+    © 2026 Metatron Dynamics, Inc. · Delaware C-Corp · File No. 10551645
+  </div>
+  <div class="footer-right">
+    <a href="https://github.com/Relational-Relativity-Corporation" target="_blank">GitHub</a>
+    <a href="https://arxiv.org/abs/2601.22389" target="_blank">arXiv</a>
+    <a href="mailto:relationalrelativity@gmail.com">Contact</a>
+  </div>
 </footer>
 
 </body>
