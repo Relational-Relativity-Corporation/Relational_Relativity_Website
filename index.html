@@ -1,10 +1,11 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Metatron Dynamics — A mathematics of bounded observation</title>
-<meta name="description" content="A mathematical framework modeling how a bounded observer relates to what they observe, applied across biology, sensorimotor coordination, and materials recovery.">
+<title>Metatron Dynamics â€” Accurate relational computation</title>
+<meta name="description" content="Metatron Dynamics has developed a mathematical framework that begins from observable relationships directly â€” treating relation as the primitive from which all computation proceeds. Founding partnership prospectus now available.">
 <meta name="theme-color" content="#0a0a0a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,7 +84,7 @@
     line-height: 1.18;
     margin: 0 0 28px;
     color: var(--text);
-    max-width: 15ch;
+    max-width: 18ch;
   }
 
   h2{
@@ -92,6 +93,15 @@
     font-size: clamp(1.5rem, 3vw, 1.9rem);
     line-height: 1.3;
     margin: 0 0 26px;
+    color: var(--text);
+  }
+
+  h3{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    margin: 0 0 10px;
     color: var(--text);
   }
 
@@ -108,22 +118,63 @@
     color: var(--text-muted); margin: 0 0 40px;
   }
 
-  .hero-links{ display: flex; gap: 28px; margin-top: 36px; font-family: 'IBM Plex Mono', monospace; font-size: 14px; }
+  .hero-links{ display: flex; gap: 28px; margin-top: 36px; font-family: 'IBM Plex Mono', monospace; font-size: 14px; flex-wrap: wrap; }
 
-  .repo-list{ list-style: none; margin: 0 0 8px; padding: 0; }
-  .repo-list li{
-    display: flex; justify-content: space-between; align-items: baseline;
-    padding: 16px 0; border-top: 1px solid var(--line);
-    font-family: 'IBM Plex Mono', monospace; font-size: 15px;
+  /* Repo cards */
+  .repo-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-bottom: 32px;
   }
-  .repo-list li:last-child{ border-bottom: 1px solid var(--line); }
-  .repo-list a{ color: var(--text); border-bottom: 1px solid var(--text-dim); }
-  .repo-list a:hover{ color: var(--accent); border-bottom-color: var(--accent); }
+  .repo-card{
+    background: var(--surface);
+    padding: 28px 28px 24px;
+  }
+  .repo-card-header{
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 12px; gap: 12px;
+  }
+  .repo-card-name{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13.5px; font-weight: 500;
+    color: var(--text);
+    border-bottom: 1px solid var(--text-dim);
+    transition: color 0.2s, border-bottom-color 0.2s;
+  }
+  .repo-card-name:hover{ color: var(--accent); border-bottom-color: var(--accent); }
   .repo-tag{
-    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); white-space: nowrap; flex-shrink: 0;
+  }
+  .repo-card p{
+    font-size: 15px; color: var(--text-muted);
+    margin: 0 0 14px;
+    line-height: 1.6;
+  }
+  .repo-card p:last-child{ margin-bottom: 0; }
+  .repo-finding{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px; color: var(--text-dim);
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+    margin-top: 14px;
+    line-height: 1.5;
   }
 
-  .org-link{ margin-top: 28px; font-family: 'IBM Plex Mono', monospace; font-size: 14px; }
+  /* Call-out block */
+  .callout{
+    border-left: 3px solid var(--accent-dim);
+    padding: 20px 24px;
+    background: var(--surface);
+    margin: 36px 0;
+  }
+  .callout p{ margin: 0; font-family: 'Spectral', Georgia, serif; font-style: italic; font-size: 1.08em; color: var(--text); }
+
+  .org-link{ margin-top: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 14px; }
 
   footer{
     padding: 56px 0 64px;
@@ -131,11 +182,15 @@
   }
   footer .wrap{ display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; }
   footer p{ margin: 0; color: var(--text-muted); max-width: 44ch; }
-  .footer-links{ font-family: 'IBM Plex Mono', monospace; font-size: 13px; display: flex; gap: 20px; }
-  .copyright{ font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--text-muted); margin-top: 40px; }
+  .footer-links{ font-family: 'IBM Plex Mono', monospace; font-size: 13px; display: flex; gap: 20px; flex-wrap: wrap; }
+  .copyright{ font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--text-dim); margin-top: 40px; }
 
+  @media (max-width: 600px){
+    .repo-grid{ grid-template-columns: 1fr; }
+    .hero-links{ flex-direction: column; gap: 16px; }
+  }
   @media (max-width: 480px){
-    .repo-list li{ flex-direction: column; align-items: flex-start; gap: 4px; }
+    .repo-card{ padding: 22px 20px 18px; }
   }
 </style>
 </head>
@@ -143,9 +198,10 @@
 
 <header class="masthead">
   <div class="masthead-inner">
-    <span class="brand"><img src="https://relationalrelativity.dev/images/Metatron_Dynamics_logo.png" alt="Metatron Dynamics logo">Metatron <strong>Dynamics</strong> · Deep-Tech · Delaware C-Corp</span>
+    <span class="brand"><img src="https://relationalrelativity.dev/images/Metatron_Dynamics_logo.png" alt="Metatron Dynamics logo">Metatron <strong>Dynamics</strong> Â· Deep-Tech Â· Delaware C-Corp</span>
     <nav class="masthead-nav">
-      <a href="#perspective">The Perspective</a>
+      <a href="#problem">The Problem</a>
+      <a href="#framework">The Framework</a>
       <a href="#repositories">Repositories</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -154,48 +210,140 @@
 
 <main>
 
+  <!-- HERO -->
   <section id="hero">
     <div class="wrap">
       <img class="hero-logo" src="https://relationalrelativity.dev/images/Metatron_Dynamics_logo.png" alt="Metatron Dynamics">
-      <p class="hero-brandline">Metatron Dynamics · Deep-Tech · Delaware C-Corp</p>
-      <p class="eyebrow">A mathematics of bounded observation</p>
-      <h1>A mathematics of how a bounded observer relates to what they see.</h1>
-      <p class="lede">From a sensory and cognitive perspective, a human being experiences a constantly changing, bounded domain of information. We are a relationship between an organism and its environment.</p>
-      <p>Metatron Dynamics has formalized that process mathematically, and is applying that formalization across substantially different declared domains.</p>
-
+      <p class="hero-brandline">Metatron Dynamics Â· Deep-Tech Â· Delaware C-Corp</p>
+      <p class="eyebrow">Accurate relational computation</p>
+      <h1>Relation as the primitive from which all computation proceeds.</h1>
+      <p class="lede">The mathematical treatments underlying modern AI and robotics were built for an era before instruments could precisely measure the relationships that complex systems actually exhibit. Metatron Dynamics has developed a framework that begins from those observations directly.</p>
+      <p>The first measurable applications are AI transformer computation and robotic sensor-to-actuator control. The enterprise being established to develop them is designed from inception for a much wider industrial and scientific opportunity.</p>
       <div class="hero-links">
-        <a href="https://github.com/Relational-Relativity-Corporation">GitHub →</a>
+        <a href="#framework">The framework â†’</a>
+        <a href="https://github.com/Relational-Relativity-Corporation">GitHub â†’</a>
+        <a href="#contact">Founding partnership inquiry â†’</a>
       </div>
     </div>
   </section>
 
-  <section id="perspective">
+  <!-- THE PROBLEM -->
+  <section id="problem">
     <div class="wrap">
-      <p class="eyebrow">The Perspective</p>
-      <h2>What the operators attempt to model.</h2>
+      <p class="eyebrow">The Problem</p>
+      <h2>A mathematical gap that additional compute cannot close.</h2>
 
-      <p>The framework's starting point is simple to state: the only mathematical primitive it uses is <em class="term">observable difference, relative to a declared boundary</em>. Not a domain-specific model of biology, or materials, or energy — an attempt to model how a bounded observer relates one observable thing to another. Time is not required to define the primitive within the framework. Temporal change enters downstream rather than as a starting assumption.</p>
+      <p>Training large AI systems now requires gigawatt-scale dedicated power infrastructure. Robotic deployment that generalizes reliably across novel environments remains an unsolved engineering problem. These are not hardware shortfalls awaiting a faster chip.</p>
 
-      <p>Because that primitive doesn't reference any particular domain, the same declaration process — declare a boundary, declare what's observable within it, declare the relations that hold between those observables — is applied whether the observables are hydrogen bonds in a protein, material flows through a recovery system, or coordination between perception and motor output. Which operators are combined, and how, is determined by the declared regime of each analysis; the operators themselves are documented at <a href="https://github.com/Relational-Relativity-Corporation/abr-kernel">abr-kernel →</a></p>
+      <p>They are what the mathematics produces at scale. The prevailing treatments â€” rooted in calculus, probability, and statistical approximation â€” were developed when the instruments and computers needed to work directly from observable relationships did not exist. Those mathematical structures have enabled extraordinary achievements. They have also imposed costs that scale faster than the useful work they produce, because <strong>prevailing mathematical treatments cannot accurately decompose complex systems</strong>.</p>
 
-      <p>The primitive is falsifiable in principle: an empirical datum whose informational content required no difference, distinction, or relation to a reference would challenge it directly.</p>
+      <p>That is why the problem exists. The fundamental gap is between the mathematical representation and the observable phenomena it is supposed to describe. Adding computation makes that gap more expensive to maintain â€” it does not close it.</p>
 
-      <p>The framework also requires that a declaration have a genuine Origin — a person, external to the system being evaluated, who declares the boundary and what's observable within it. Under the framework's provenance rule, a model cannot generate its own declaration and simultaneously serve as its Origin; that provenance would be circular.</p>
+      <div class="callout">
+        <p>A mathematics grounded in observable relationships is not one approach competing with others. It is the direction the field must eventually take.</p>
+      </div>
+
+      <p>The question is not whether that transition occurs. It is when, and who establishes the scientific and engineering organization capable of developing it.</p>
     </div>
   </section>
 
+  <!-- THE FRAMEWORK -->
+  <section id="framework">
+    <div class="wrap">
+      <p class="eyebrow">The Framework</p>
+      <h2>Developed. Documented. Executable.</h2>
+
+      <p>Metatron Dynamics has developed a complete relational mathematics framework â€” Kernel V8 â€” grounded in a single primitive: <em class="term">observable difference, relative to a declared boundary</em>. Not a domain-specific model of biology, or control systems, or attention â€” a treatment of how a bounded observer relates one observable thing to another.</p>
+
+      <p>The framework's discipline is strict. Every quantity must be declared from observation before it can be evaluated; mathematical constructs are not substituted for physical measurements; initial states cannot be fabricated for convenience. The separation between mathematical conformance, observable validation, and independent repeatability is maintained throughout every application.</p>
+
+      <p>Because the primitive does not reference any particular domain, the same declaration process applies whether the observables are hydrogen bonds in a protein complex, atmospheric pressure gradients, attention scores across a token sequence, or actuator commands in a robot controller. The operators are domain-agnostic; what varies is the measurement map that connects them to each specific system.</p>
+
+      <p>The framework is documented, operator-based, and has working executable implementations in transformer computation and robotic control. It is published and mathematically available. <strong>Correct application to a given domain requires genuine understanding of what is observable in that domain and how it enters the framework.</strong> That understanding develops through direct collaboration with the framework's originator â€” not by reading the code or the paper.</p>
+
+      <p>The team built through this enterprise would be, for the foreseeable future, the only group capable of deploying this mathematics at industrial scale. That operational capability is what the founding partnership establishes.</p>
+
+      <p><a href="https://github.com/Relational-Relativity-Corporation/abr-kernel">abr-kernel â€” Kernel V8 reference â†’</a></p>
+    </div>
+  </section>
+
+  <!-- REPOSITORIES -->
   <section id="repositories">
     <div class="wrap">
       <p class="eyebrow">Repositories</p>
-      <h2>Where it's being applied.</h2>
+      <h2>Where it is being applied.</h2>
 
-      <ul class="repo-list">
-        <li><a href="https://github.com/Relational-Relativity-Corporation/abr-biological-binding">abr-biological-binding →</a><span class="repo-tag">biology</span></li>
-        <li><a href="https://github.com/Relational-Relativity-Corporation/abr_sensorimotor_interface">abr-sensorimotor-interface →</a><span class="repo-tag">sensorimotor</span></li>
-        <li><a href="https://github.com/Relational-Relativity-Corporation/abr-materials-recovery">abr-materials-recovery →</a><span class="repo-tag">materials</span></li>
-      </ul>
+      <p>Four active programs demonstrate the framework across substantially different domains. Each begins from declared observations rather than learned models. Each produces results that are independently reproducible from the declared boundary conditions.</p>
+    </div>
 
-      <p class="org-link"><a href="https://github.com/Relational-Relativity-Corporation">Full organization: github.com/Relational-Relativity-Corporation →</a></p>
+    <div class="wide-wrap">
+      <div class="repo-grid">
+
+        <div class="repo-card">
+          <div class="repo-card-header">
+            <a class="repo-card-name" href="https://github.com/Relational-Relativity-Corporation/abr-robotics-demo">abr-robotics-demo â†’</a>
+            <span class="repo-tag">Robotics</span>
+          </div>
+          <p>Sensor-to-actuator control using declared relational operators. The controller translates changing sensor observations into actuator commands through an operator chain declared from measurement, rather than a trained model that generalizes statistically from prior examples.</p>
+          <p>Robotic deployment that generalizes across novel environments â€” without retraining â€” is the engineering problem this program addresses directly. The current work is in simulation; independent physical validation under disturbance and novel conditions is the next stage.</p>
+          <p class="repo-finding">Status: PASS V0.5.2 Â· Sensorâ†’Mâ†’operatorâ†’actuator chain executable Â· Physical validation pending</p>
+        </div>
+
+        <div class="repo-card">
+          <div class="repo-card-header">
+            <a class="repo-card-name" href="https://github.com/Relational-Relativity-Corporation/abr-relational-attention">abr-relational-attention â†’</a>
+            <span class="repo-tag">AI / Transformers</span>
+          </div>
+          <p>Relational treatment of transformer attention computation. Full softmax attention scales as O(nÂ²) in sequence length â€” the quadratic cost that limits context windows and drives memory and energy requirements at production scale.</p>
+          <p>This implementation uses incremental relational accumulation with per-step complexity O(nÂ·k), where k is the number of declared relations active at each step. A separate audio-domain benchmark showed approximately fourfold less computation in a bounded test, with reconstruction overhead and divergence findings documented.</p>
+          <p class="repo-finding">Kernel V7 Â· O(nÂ·k) accumulation rule: Ï_acc(i,j) â† Ï_acc + Î·Â·Ïâ‚™Â·(1âˆ’Ï_acc) Â· Bounded experiments; industrial-scale comparison pending</p>
+        </div>
+
+        <div class="repo-card">
+          <div class="repo-card-header">
+            <a class="repo-card-name" href="https://github.com/Relational-Relativity-Corporation/abr-biological-binding">abr-biological-binding â†’</a>
+            <span class="repo-tag">Biology</span>
+          </div>
+          <p>Relational analysis of a real antibody-antigen crystal structure: PDB 1MLC (Fab D44.1 / hen egg-white lysozyme complex). Every distance claim in the declaration is independently reproducible from the raw public PDB coordinates â€” not asserted, executed and checkable by anyone who clones the repository.</p>
+          <p>The analysis goes beyond a standard contact map to identify component pairs: structural claims about specific asymmetries and bridging contacts, each with independently verifiable positive and negative halves. Section 8 of the declaration offers relational architectural interpretation â€” explicitly marked as interpretive â€” for evaluation by structural biologists and immunologists.</p>
+          <p class="repo-finding">Rust Â· cargo run --bin mlc_verify Â· All declared distances independently recomputed from data/pdb/1MLC.pdb Â· One documented correction in provenance record</p>
+        </div>
+
+        <div class="repo-card">
+          <div class="repo-card-header">
+            <a class="repo-card-name" href="https://github.com/Relational-Relativity-Corporation/abr-weather-monitor">abr-weather-monitor â†’</a>
+            <span class="repo-tag">Atmospheric</span>
+          </div>
+          <p>Relational analysis of atmospheric systems. The central finding: in a bounded retrospective test, the relational structural metric Î”Î“ detected reorganization before scalar pressure peaks in 42 of 42 cases â€” a lead-time result that a scalar treatment of the same data does not produce.</p>
+          <p>The physical interpretation is that relational structure within a weather system reorganizes before the scalar measurements typically used to forecast it reach their peaks. Whether this lead time extends to operational forecasting requires prospective testing under declared conditions.</p>
+          <p class="repo-finding">42/42 Î”Î“ lead times in retrospective bounded test Â· Prospective validation and operational comparison pending Â· Program archived</p>
+        </div>
+
+      </div>
+
+      <p class="org-link wrap"><a href="https://github.com/Relational-Relativity-Corporation">Full organization: github.com/Relational-Relativity-Corporation â†’</a></p>
+    </div>
+  </section>
+
+  <!-- THE ENTERPRISE -->
+  <section id="enterprise">
+    <div class="wrap">
+      <p class="eyebrow">The Enterprise</p>
+      <h2>What founding partners are being asked to establish.</h2>
+
+      <p>At present, application of the framework remains concentrated in its founder. That is the immediate organizational bottleneck â€” and the first thing a serious development partner would help solve.</p>
+
+      <p>The enterprise being proposed is not a startup organized around two products. It is a comprehensive scientific and engineering organization â€” mathematicians, physicists, AI researchers, robotics engineers, and systems developers â€” with a mandate commensurate with the mathematics. The initial laboratory's principal assets would be trained expertise, research methodology, and shared computational infrastructure. Physical testing costs and specialized compute are real; manufacturing and deployment can be accessed through later industrial partnerships.</p>
+
+      <p>The founding partners' contribution is not passive capital. It is the organizational leadership â€” recruitment, operating structure, commercialization strategy, institutional relationships â€” needed to translate an existing mathematical foundation into independently demonstrated industrial value. The founder's most valuable role is scientific director: responsible for transferring the methodology and protecting the integrity of the mathematics, while an experienced executive team manages the operations of the enterprise.</p>
+
+      <p><strong>The foundational mathematics is not for sale.</strong> The enterprise that develops its applications â€” through negotiated ownership of new qualifying software, inventions, designs, and commercial products â€” is what founding partners are investing in. Existing research and code will be inventoried; rights cannot be assumed from funding alone.</p>
+
+      <p>The first programs, AI transformers and robotic control, together represent hundreds of billions of dollars in annual global spend and remain, at scale, mathematically unsolved problems. They are the first measurable priorities of this enterprise, not its limits.</p>
+
+      <div class="callout">
+        <p>The potential value is substantial; its actual magnitude must be established through rigorous evidence, capable execution, and commercial adoption.</p>
+      </div>
     </div>
   </section>
 
@@ -205,17 +353,19 @@
   <div class="wrap">
     <div>
       <p class="eyebrow" style="margin-bottom:10px;">Contact</p>
-      <p>We welcome anyone who recognizes what is being described here — investors, researchers, engineers, domain practitioners, and anyone working on problems where relational structure matters and existing computational approaches leave important relationships implicit.</p>
+      <p>We are seeking a small group of founding partners prepared to establish a comprehensive scientific and engineering enterprise around accurate relational computation. Introductions and serious inquiries welcome.</p>
     </div>
     <div class="footer-links">
       <a href="mailto:relationalrelativity@gmail.com">Start a conversation</a>
-      <a href="https://github.com/Relational-Relativity-Corporation">GitHub →</a>
+      <a href="https://github.com/Relational-Relativity-Corporation">GitHub â†’</a>
     </div>
   </div>
   <div class="wrap">
-    <p class="copyright">© 2026 Metatron Dynamics, Inc. · Delaware C-Corp · File No. 10551645</p>
+    <p class="copyright">Â© 2026 Metatron Dynamics, Inc. Â· Delaware C-Corp Â· File No. 10551645 Â· Robin Macomber, Founder & President Â· Working discussion draft. Commercial structures and intellectual property rights remain subject to negotiation and professional legal review.</p>
   </div>
 </footer>
 
 </body>
 </html>
+
+</body></html>
