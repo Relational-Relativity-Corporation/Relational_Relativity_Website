@@ -259,7 +259,9 @@
 
       <p>Because the primitive does not reference any particular domain, the same declaration process applies whether the observables are hydrogen bonds in a protein complex, atmospheric pressure gradients, attention scores across a token sequence, or actuator commands in a robot controller. The operators are domain-agnostic; what varies is the measurement map that connects them to each specific system.</p>
 
-      <p>The framework is documented, operator-based, and has working executable implementations in transformer computation and robotic control. It is published and mathematically available. <strong>Correct application to a given domain requires genuine understanding of what is observable in that domain and how it enters the framework.</strong> That understanding develops through direct collaboration with the framework's originator &mdash; not by reading the code or the paper.</p>
+      <p>The framework is documented, operator-based, and has working executable implementations in transformer computation and robotic control.</p>
+
+      <p><strong>Why this cannot be trivially copied.</strong> The framework is published and every result is independently reproducible from the repositories. Reproducing a result, however, is not the same as producing one. Calculating the primitive in a new domain requires constructing its measurement map &mdash; identifying what is actually observable <em>in that system</em> and declaring it correctly &mdash; and that work is nontrivial and specific to each domain. That capability currently exists in one person. Building it into a team is what makes this enterprise defensible, and it is the first thing founding partners would establish.</p>
 
       <p>The team built through this enterprise would be, for the foreseeable future, the only group capable of deploying this mathematics at industrial scale. That operational capability is what the founding partnership establishes.</p>
 
